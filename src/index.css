@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.frontview{
+  display: flex;
+}
+
+button .LogIO{
+  display: block;
+  margin: 0 0 0 auto; 
+}
+
+.SearchWindow{
+  display:block;
+  width: 50%;
+}
+
+.input .cards .Songpick{
+  display: block;
+}
+
+.showView{
+  display: block;
+}
+
+.random-btn{
+  margin-bottom: 25px;
+}
+
+table{
+  margin-top: 18px;
+}
+
+td, label{
+  text-align: center;
+  padding: 10px;
+  font-weight: 800;
+}
+
+
