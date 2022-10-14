@@ -39,12 +39,12 @@ export default function Fusion() {
 
     for (var i = (recommendation.length - 1); 0 < i; i--) {
       // 0〜(i+1)の範囲で値を取得
-      var r = Math.floor(Math.random() * (i + 1));
+      var r = Math.floor(Math.random() * (i + 1))
 
       // 要素の並び替えを実行
       var tmp = recommendation[i];
-      recommendation[i] = recommendation[r];
-      recommendation[r] = tmp;
+      recommendation[i] = recommendation[r]
+      recommendation[r] = tmp
     }
 
     dispatch({ type: 'set_recommendation_info', payload: recommendation })
