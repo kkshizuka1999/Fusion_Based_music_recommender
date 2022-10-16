@@ -18,13 +18,19 @@ module.exports = {
   ],
   overrides: [
     {
+      files: ['src/App.js', 'src/index.js', 'src/**/*js'],
+      rules: {
+        'react/jsx-filename-extension': 'off',
+      },
+    },
+    {
       files: ['*.tsx'],
       rules: {
         '@typescript-eslint/no-unused-vars': 'off',
       },
     },
     {
-      files: ['**/*.jsx'],
+      files: ['**/*.jsx', '**/*.js'],
       rules: {
         'react/prop-types': 'off',
       },
