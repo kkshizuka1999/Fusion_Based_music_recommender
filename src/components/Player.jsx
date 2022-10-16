@@ -11,7 +11,7 @@ export default function Player({ trackUri }) {
   return (
     <SpotifyWebPlayer
       token={token}
-      initialVolume={0.3}
+      initialVolume={0.1}
       showSaveIcon
       callback={state => {
         if (state.isPlaying) {

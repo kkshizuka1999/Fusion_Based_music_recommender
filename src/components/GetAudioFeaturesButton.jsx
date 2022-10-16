@@ -55,7 +55,7 @@ export default function GetAudioFeaturesButton(props) {
   }
   return (
     <div>
-      <button type="button" class="btn btn-primary btn-sm" onClick={() => getAF(
+      <button type="button" className="rounded-circle" onClick={() => getAF(
         props.flag,
         props.song.id,
         props.song.album.images[0].url,

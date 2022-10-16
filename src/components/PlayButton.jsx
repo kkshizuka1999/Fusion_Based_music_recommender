@@ -15,7 +15,7 @@ export default function PlayButton(props) {
 
   return (
     <div>
-      <button type="button" class="btn btn-primary btn-sm" onClick={() => handleClick(props.uri)}>
+      <button type="button" className="rounded-circle" onClick={() => handleClick(props.uri)}>
         <BsPlayFill />
       </button>
     </div>

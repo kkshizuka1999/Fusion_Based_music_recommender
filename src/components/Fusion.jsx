@@ -58,15 +58,12 @@ export default function Fusion() {
       <form name="fusion">
         <table>
           <tr>
-            <td>
-              <input type="radio" name="acousticness" value={state.slotA.acousticness} />
-            </td>
-            <td>
-              <label>acousticness</label>
-            </td>
-            <td>
-              <input type="radio" name="acousticness" value={state.slotB.acousticness} />
-            </td>
+            <div class="radio">
+              <input class="radio-input-1" id="acousticness" type="radio" name="acousticness" value={state.slotA.acousticness} />
+              <label for="acousticness" class="radio-label"></label>
+              <input class="radio-input-2" id="acousticness-2" type="radio" name="acousticness" value={state.slotB.acousticness} />
+              <label for="acousticness-2" class="radio-label-2"></label>
+            </div>
           </tr>
           <tr>
             <td>
@@ -180,8 +177,12 @@ export default function Fusion() {
           </tr>
         </table>
       </form>
-      <div class="center-block">
-        <Button onClick={getRecommendation}>Get Recommendation</Button>
+      <div className="center-block">
+        <button class="ui-button fancy-button pop-onhover bg-gradient3" onClick={getRecommendation}>
+          <span class="auth-btn">
+            Fusion
+          </span>
+        </button>
       </div>
     </div>
   )
