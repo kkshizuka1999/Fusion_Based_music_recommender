@@ -4,19 +4,21 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
     'airbnb',
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'prettier',
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
-  rules: {
-  },
-};
+  plugins: ['react'],
+  rules: {},
+}
