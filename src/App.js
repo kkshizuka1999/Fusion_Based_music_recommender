@@ -33,7 +33,7 @@ function App() {
   return (
     <div class="mb-5">
       <header className='App-header'>
-        <h1>Fusion-Based Recommender System with Spotify API</h1>
+        <h1>Fusion-Based Recommender with Spotify API</h1>
         {!token ? <Login /> :
           <Container>
             <Button onClick={logout}>Logout</Button>
