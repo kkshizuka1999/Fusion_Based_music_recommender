@@ -1,6 +1,5 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 import SpotifyWebPlayer from 'react-spotify-web-playback/lib'
 
 export default function Player({ trackUri }) {
@@ -13,7 +12,7 @@ export default function Player({ trackUri }) {
       token={token}
       initialVolume={0.1}
       showSaveIcon
-      callback={state => {
+      callback={(state) => {
         if (state.isPlaying) {
           setPlay(false)
         }

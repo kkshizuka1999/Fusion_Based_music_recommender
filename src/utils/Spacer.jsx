@@ -1,13 +1,8 @@
 import React from 'react'
 
-const Spacer = ({
-  size,
-  axis,
-  style = {},
-  ...delegated
-}) => {
-  const width = axis === 'vertical' ? 1 : size;
-  const height = axis === 'horizontal' ? 1 : size;
+const Spacer = ({ size, axis, style = {}, ...delegated }) => {
+  const width = axis === 'vertical' ? 1 : size
+  const height = axis === 'horizontal' ? 1 : size
   return (
     <span
       style={{
@@ -20,7 +15,6 @@ const Spacer = ({
       }}
       {...delegated}
     />
-  );
-};
-export default Spacer;
-
+  )
+}
+export default Spacer

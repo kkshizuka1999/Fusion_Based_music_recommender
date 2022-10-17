@@ -16,52 +16,59 @@ const App = () => {
   const [token, setToken] = useState('')
   const [state] = useContext(Context)
   useEffect(() => {
-    const hash = window.location.hash
-    let token = window.localStorage.getItem("token")
+    const { hash } = window.location
+    let token = window.localStorage.getItem('token')
 
     if (!token && hash) {
-      token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-      window.location.hash = ""
-      window.localStorage.setItem("token", token)
+      token = hash
+        .substring(1)
+        .split('&')
+        .find((elem) => elem.startsWith('access_token'))
+        .split('=')[1]
+      window.location.hash = ''
+      window.localStorage.setItem('token', token)
       setToken(token)
     }
   }, [])
 
   const logout = () => {
-    setToken("")
-    window.localStorage.removeItem("token")
+    setToken('')
+    window.localStorage.removeItem('token')
   }
 
   return (
     <Layout>
-      <div class="mb-5">
-        <header className='App-header'>
+      <div className="mb-5">
+        <header className="App-header">
           <h1>Fusion-Based Recommender with Spotify API</h1>
-          {!token ? <Login /> :
-            <button onClick={logout} class="ui-button fancy-button pop-onhover bg-gradient2">
-              <span class="auth-btn">
-                Logout
-              </span>
+          {!token ? (
+            <Login />
+          ) : (
+            <button
+              onClick={logout}
+              className="ui-button fancy-button pop-onhover bg-gradient2"
+            >
+              <span className="auth-btn">Logout</span>
             </button>
-          }
+          )}
           <Spacer size={16} />
         </header>
-        <div className='frontview'>
+        <div className="frontview">
           <Search />
           <Fusion />
           <GetRondomSong />
         </div>
         <Container>
           <RecommendationView songs={state.recommendationInfo} />
-          <footer class="footer">
-            <div class="fixed-bottom">
+          <footer className="footer">
+            <div className="fixed-bottom">
               <Player trackUri={state.songUri} />
             </div>
           </footer>
         </Container>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App

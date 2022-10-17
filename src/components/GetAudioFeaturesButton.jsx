@@ -1,36 +1,39 @@
 import React, { useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { BsPlusLg } from 'react-icons/bs'
 import { Context } from '../utils/Store'
-import { BsPlusLg } from "react-icons/bs"
 import '../index.css'
 
 export default function GetAudioFeaturesButton(props) {
   const [state, dispatch] = useContext(Context)
-  var features = {}
-  var songInfo = {}
+  let features = {}
+  let songInfo = {}
   async function getAF(flag, id, img, songname, artistsname, uri) {
     console.log(id)
     features = {
-      id: id
+      id,
     }
     songInfo = {
       image: img,
       name: songname,
       artists: artistsname,
-      uri: uri
+      uri,
     }
-    let token = window.localStorage.getItem("token")
-    //Get request using search to get the ArtistID
-    var AFParams = {
+    const token = window.localStorage.getItem('token')
+    // Get request using search to get the ArtistID
+    const AFParams = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      }
+        Authorization: `Bearer ${token}`,
+      },
     }
-    var tracks = await fetch('https://api.spotify.com/v1/audio-features/' + id, AFParams)
-      .then(response => response.json())
-      .then(data => {
+    const tracks = await fetch(
+      `https://api.spotify.com/v1/audio-features/${id}`,
+      AFParams
+    )
+      .then((response) => response.json())
+      .then((data) => {
         features.acousticness = data.acousticness
         features.danceability = data.danceability
         features.energy = data.energy
@@ -51,18 +54,27 @@ export default function GetAudioFeaturesButton(props) {
       dispatch({ type: 'send_to_slotB', payload: features })
       dispatch({ type: 'set_infoB', payload: songInfo })
     }
-
   }
   return (
     <div>
-      <button type="button" className="rounded-circle" onClick={() => getAF(
-        props.flag,
-        props.song.id,
-        props.song.album.images[0].url,
-        props.song.name,
-        props.song.artists.map(artist => { return artist.name }).join(" & "),
-        props.song.uri,
-      )}>
+      <button
+        type="button"
+        className="rounded-circle"
+        onClick={() =>
+          getAF(
+            props.flag,
+            props.song.id,
+            props.song.album.images[0].url,
+            props.song.name,
+            props.song.artists
+              .map((artist) => {
+                return artist.name
+              })
+              .join(' & '),
+            props.song.uri
+          )
+        }
+      >
         <BsPlusLg />
       </button>
     </div>

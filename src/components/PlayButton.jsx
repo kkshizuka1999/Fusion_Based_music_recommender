@@ -1,8 +1,7 @@
-import React from 'react'
-import { useContext } from 'react'
-import { Context } from '../utils/Store'
-import { BsPlayFill } from "react-icons/bs";
+import React, { useContext } from 'react'
 
+import { BsPlayFill } from 'react-icons/bs'
+import { Context } from '../utils/Store'
 
 export default function PlayButton(props) {
   const [state, dispatch] = useContext(Context)
@@ -15,7 +14,11 @@ export default function PlayButton(props) {
 
   return (
     <div>
-      <button type="button" className="rounded-circle" onClick={() => handleClick(props.uri)}>
+      <button
+        type="button"
+        className="rounded-circle"
+        onClick={() => handleClick(props.uri)}
+      >
         <BsPlayFill />
       </button>
     </div>

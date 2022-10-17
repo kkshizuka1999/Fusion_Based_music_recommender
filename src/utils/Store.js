@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react'
 
 const initialState = {
   slotA: {},
@@ -6,15 +6,14 @@ const initialState = {
   songInfoA: {},
   songInfoB: {},
   recommendationInfo: {},
-  songUri: "",
-};
+  songUri: '',
+}
 
-export const Context = createContext(initialState);
+export const Context = createContext(initialState)
 
 export const Store = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-
       case 'send_to_slotA':
         return { ...state, slotA: action.payload }
 
@@ -36,11 +35,9 @@ export const Store = ({ children }) => {
       default:
         return state
     }
-  }, initialState);
+  }, initialState)
 
   return (
-    <Context.Provider value={[state, dispatch]}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
   )
 }
