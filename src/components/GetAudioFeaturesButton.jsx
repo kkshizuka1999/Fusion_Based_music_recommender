@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Context } from '../utils/Store'
-import { BsPlusLg } from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs"
 import '../index.css'
 
 export default function GetAudioFeaturesButton(props) {
@@ -63,7 +63,7 @@ export default function GetAudioFeaturesButton(props) {
         props.song.artists.map(artist => { return artist.name }).join(" & "),
         props.song.uri,
       )}>
-        <BsPlusLg/>
+        <BsPlusLg />
       </button>
     </div>
   )
