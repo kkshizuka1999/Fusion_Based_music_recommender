@@ -1,15 +1,12 @@
 import React, { useContext } from 'react'
-
 import { BsPlayFill } from 'react-icons/bs'
 import { Context } from '../utils/Store'
 
-export default function PlayButton(props) {
+const PlayButton = ({ uri }) => {
   const [state, dispatch] = useContext(Context)
 
-  const handleClick = (uri) => {
-    console.log(uri)
+  const handleClick = () => {
     dispatch({ type: 'set_song_uri', payload: uri })
-    console.log(state.songUri)
   }
 
   return (
@@ -17,10 +14,12 @@ export default function PlayButton(props) {
       <button
         type="button"
         className="rounded-circle"
-        onClick={() => handleClick(props.uri)}
+        onClick={() => handleClick(uri)}
       >
         <BsPlayFill />
       </button>
     </div>
   )
 }
+
+export default PlayButton

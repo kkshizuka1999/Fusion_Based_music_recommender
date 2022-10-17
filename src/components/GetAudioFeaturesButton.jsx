@@ -4,12 +4,11 @@ import { BsPlusLg } from 'react-icons/bs'
 import { Context } from '../utils/Store'
 import '../index.css'
 
-export default function GetAudioFeaturesButton(props) {
+const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
   const [state, dispatch] = useContext(Context)
   let features = {}
   let songInfo = {}
   async function getAF(flag, id, img, songname, artistsname, uri) {
-    console.log(id)
     features = {
       id,
     }
@@ -28,10 +27,7 @@ export default function GetAudioFeaturesButton(props) {
         Authorization: `Bearer ${token}`,
       },
     }
-    const tracks = await fetch(
-      `https://api.spotify.com/v1/audio-features/${id}`,
-      AFParams
-    )
+    await fetch(`https://api.spotify.com/v1/audio-features/${id}`, AFParams)
       .then((response) => response.json())
       .then((data) => {
         features.acousticness = data.acousticness
@@ -62,16 +58,16 @@ export default function GetAudioFeaturesButton(props) {
         className="rounded-circle"
         onClick={() =>
           getAF(
-            props.flag,
-            props.song.id,
-            props.song.album.images[0].url,
-            props.song.name,
-            props.song.artists
+            defaultFlag,
+            song.id,
+            song.album.images[0].url,
+            song.name,
+            song.artists
               .map((artist) => {
                 return artist.name
               })
               .join(' & '),
-            props.song.uri
+            song.uri
           )
         }
       >
@@ -80,3 +76,5 @@ export default function GetAudioFeaturesButton(props) {
     </div>
   )
 }
+
+export default GetAudioFeaturesButton

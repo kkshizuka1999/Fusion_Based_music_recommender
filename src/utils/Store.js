@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useMemo } from 'react'
 
 const initialState = {
   slotA: {},
@@ -12,32 +12,34 @@ const initialState = {
 export const Context = createContext(initialState)
 
 export const Store = ({ children }) => {
-  const [state, dispatch] = useReducer((state, action) => {
+  const [state, dispatch] = useReducer((rstate, action) => {
     switch (action.type) {
       case 'send_to_slotA':
-        return { ...state, slotA: action.payload }
+        return { ...rstate, slotA: action.payload }
 
       case 'send_to_slotB':
-        return { ...state, slotB: action.payload }
+        return { ...rstate, slotB: action.payload }
 
       case 'set_infoA':
-        return { ...state, songInfoA: action.payload }
+        return { ...rstate, songInfoA: action.payload }
 
       case 'set_infoB':
-        return { ...state, songInfoB: action.payload }
+        return { ...rstate, songInfoB: action.payload }
 
       case 'set_recommendation_info':
-        return { ...state, recommendationInfo: action.payload }
+        return { ...rstate, recommendationInfo: action.payload }
 
       case 'set_song_uri':
-        return { ...state, songUri: action.payload }
+        return { ...rstate, songUri: action.payload }
 
       default:
-        return state
+        return rstate
     }
   }, initialState)
 
-  return (
-    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
-  )
+  return useMemo(() => {
+    return (
+      <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+    )
+  })
 }

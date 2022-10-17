@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-
 import SpotifyWebPlayer from 'react-spotify-web-playback/lib'
 
-export default function Player({ trackUri }) {
+const Player = ({ trackUri }) => {
   const [play, setPlay] = useState(false)
   const token = window.localStorage.getItem('token')
   useEffect(() => setPlay(true), [trackUri])
@@ -22,3 +21,5 @@ export default function Player({ trackUri }) {
     />
   )
 }
+
+export default Player

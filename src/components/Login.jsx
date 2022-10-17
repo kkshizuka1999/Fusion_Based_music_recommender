@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button, Container } from 'react-bootstrap'
 import '../button.scss'
 
-export default function Login() {
+const Login = () => {
   const CLIENT_ID = '31ba0a4e4e904836bff6ac72f5de9f4b'
   const REDIRECT_URI = 'http://localhost:3000'
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
@@ -29,3 +28,5 @@ export default function Login() {
     </a>
   )
 }
+
+export default Login

@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {
-  Container,
-  InputGroup,
-  FormControl,
-  Button,
-  Offcanvas,
-} from 'react-bootstrap'
-
+import { Container, InputGroup, FormControl, Offcanvas } from 'react-bootstrap'
 import '../index.css'
 import SearchView from './SearchView'
 import Slot from './Slot'
@@ -31,7 +24,7 @@ const Search = () => {
         Authorization: `Bearer ${token}`,
       },
     }
-    const tracks = await fetch(
+    await fetch(
       `https://api.spotify.com/v1/search?q=${input}&type=track`,
       artistParams
     )
@@ -39,12 +32,12 @@ const Search = () => {
       .then((data) => {
         setSongs(data.tracks.items)
       })
-    console.log(songs)
   }
 
   return (
     <div className="SearchWindow">
       <button
+        type="button"
         className="ui-button fancy-button bg-gradient1 showView"
         onClick={handleShow}
       >

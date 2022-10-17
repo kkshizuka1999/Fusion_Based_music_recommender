@@ -61,7 +61,7 @@ module.exports = {
     'react/jsx-props-no-spreading': [
       2,
       {
-        exceptions: ['FormProvider', 'input', 'select'],
+        exceptions: ['span'],
       },
     ],
     'jsx-a11y/label-has-associated-control': [

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Login from './components/Login'
 import GetRondomSong from './components/GetRondomSong'
@@ -17,17 +17,18 @@ const App = () => {
   const [state] = useContext(Context)
   useEffect(() => {
     const { hash } = window.location
-    let token = window.localStorage.getItem('token')
+    let localToken = window.localStorage.getItem('token')
 
-    if (!token && hash) {
-      token = hash
+    if (!localToken && hash) {
+      // eslint-disable-next-line prefer-destructuring
+      localToken = hash
         .substring(1)
         .split('&')
         .find((elem) => elem.startsWith('access_token'))
         .split('=')[1]
       window.location.hash = ''
-      window.localStorage.setItem('token', token)
-      setToken(token)
+      window.localStorage.setItem('token', localToken)
+      setToken(localToken)
     }
   }, [])
 
@@ -45,6 +46,7 @@ const App = () => {
             <Login />
           ) : (
             <button
+              type="button"
               onClick={logout}
               className="ui-button fancy-button pop-onhover bg-gradient2"
             >

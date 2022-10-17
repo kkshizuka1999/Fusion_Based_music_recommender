@@ -4,12 +4,12 @@ import '../index.css'
 import GetAudioFeaturesButton from './GetAudioFeaturesButton'
 import PlayButton from './PlayButton'
 
-export default function SearchView({ songs, flag }) {
+const SearchView = ({ songs, flag }) => {
   return (
     <div className="pr-2 my-3 lm-2">
       {songs.map((song) => {
         return (
-          <div className="border-bottom border-info px-2 mt-3">
+          <div key={song.id} className="border-bottom border-info px-2 mt-3">
             <div className="d-flex flex-row align-items-center justify-content-start">
               <img
                 src={song.album.images[0].url}
@@ -41,3 +41,5 @@ export default function SearchView({ songs, flag }) {
     </div>
   )
 }
+
+export default SearchView

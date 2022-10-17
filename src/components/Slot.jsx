@@ -3,10 +3,10 @@ import { Card } from 'react-bootstrap'
 import { Context } from '../utils/Store'
 import PlayButton from './PlayButton'
 
-export default function Slot(props) {
+const Slot = ({ flag }) => {
   const [state] = useContext(Context)
   let slotInfo = {}
-  if (props.flag === 0) {
+  if (flag === 0) {
     slotInfo = state.songInfoA
   } else {
     slotInfo = state.songInfoB
@@ -25,3 +25,5 @@ export default function Slot(props) {
     </div>
   )
 }
+
+export default Slot

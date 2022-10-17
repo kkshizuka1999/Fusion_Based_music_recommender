@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
-
-import { Button } from 'react-bootstrap'
 import { Context } from '../utils/Store'
 
-export default function Fusion() {
+const Fusion = () => {
   let recommendation = {}
   const [state, dispatch] = useContext(Context)
 
@@ -19,13 +17,10 @@ export default function Fusion() {
         Authorization: `Bearer ${token}`,
       },
     }
-    const tracks = await fetch(
+    await fetch(
       `https://api.spotify.com/v1/recommendations?seed_tracks=${
         state.slotA.id
-      },${
-        state.slotB.id
-        // + (fusion.seed_track[0].checked ? fusion.seed_track[0].value : fusion.seed_track[1].value)
-      }&target_acousticness=${
+      },${state.slotB.id}&target_acousticness=${
         fusion.acousticness[0].checked
           ? fusion.acousticness[0].value
           : fusion.acousticness[1].value
@@ -71,7 +66,7 @@ export default function Fusion() {
         recommendation = data.tracks
       })
 
-    for (let i = recommendation.length - 1; i > 0; i--) {
+    for (let i = recommendation.length - 1; i > 0; i -= 1) {
       // 0〜(i+1)の範囲で値を取得
       const r = Math.floor(Math.random() * (i + 1))
 
@@ -82,8 +77,6 @@ export default function Fusion() {
     }
 
     dispatch({ type: 'set_recommendation_info', payload: recommendation })
-
-    console.log(recommendation)
   }
 
   return (
@@ -119,7 +112,7 @@ export default function Fusion() {
               />
             </td>
             <td>
-              <label>danceability</label>
+              <label htmlFor="danceability">danceability</label>
             </td>
             <td>
               <input
@@ -134,7 +127,7 @@ export default function Fusion() {
               <input type="radio" name="energy" value={state.slotA.energy} />
             </td>
             <td>
-              <label>energy</label>
+              <label htmlFor="energy">energy</label>
             </td>
             <td>
               <input type="radio" name="energy" value={state.slotB.energy} />
@@ -149,7 +142,7 @@ export default function Fusion() {
               />
             </td>
             <td>
-              <label>instrumentalness</label>
+              <label htmlFor="instrumentalness">instrumentalness</label>
             </td>
             <td>
               <input
@@ -164,7 +157,7 @@ export default function Fusion() {
               <input type="radio" name="key" value={state.slotA.key} />
             </td>
             <td>
-              <label>key</label>
+              <label htmlFor="key">key</label>
             </td>
             <td>
               <input type="radio" name="key" value={state.slotB.key} />
@@ -179,7 +172,7 @@ export default function Fusion() {
               />
             </td>
             <td>
-              <label>liveness</label>
+              <label htmlFor="liveness">liveness</label>
             </td>
             <td>
               <input
@@ -198,7 +191,7 @@ export default function Fusion() {
               />
             </td>
             <td>
-              <label>loudness</label>
+              <label htmlFor="loudness">loudness</label>
             </td>
             <td>
               <input
@@ -213,7 +206,7 @@ export default function Fusion() {
               <input type="radio" name="mode" value={state.slotA.mode} />
             </td>
             <td>
-              <label>mode</label>
+              <label htmlFor="mode">mode</label>
             </td>
             <td>
               <input type="radio" name="mode" value={state.slotB.mode} />
@@ -228,7 +221,7 @@ export default function Fusion() {
               />
             </td>
             <td>
-              <label>speechiness</label>
+              <label htmlFor="speechiness">speechiness</label>
             </td>
             <td>
               <input
@@ -243,7 +236,7 @@ export default function Fusion() {
               <input type="radio" name="tempo" value={state.slotA.tempo} />
             </td>
             <td>
-              <label>tempo</label>
+              <label htmlFor="tempo">tempo</label>
             </td>
             <td>
               <input type="radio" name="tempo" value={state.slotB.tempo} />
@@ -254,7 +247,7 @@ export default function Fusion() {
               <input type="radio" name="valence" value={state.slotA.valence} />
             </td>
             <td>
-              <label>valence</label>
+              <label htmlFor="valence">valence</label>
             </td>
             <td>
               <input type="radio" name="valence" value={state.slotB.valence} />
@@ -264,6 +257,7 @@ export default function Fusion() {
       </form>
       <div className="center-block">
         <button
+          type="button"
           className="ui-button fancy-button pop-onhover bg-gradient3"
           onClick={getRecommendation}
         >
@@ -273,3 +267,5 @@ export default function Fusion() {
     </div>
   )
 }
+
+export default Fusion

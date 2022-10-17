@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Button, Offcanvas } from 'react-bootstrap'
+import { Container, Offcanvas } from 'react-bootstrap'
 import '../index.css'
 import '../button.scss'
 import SearchView from './SearchView'
 import Slot from './Slot'
 
-export default function GetRondomSong() {
+const GetRondomSong = () => {
   const [songs, setSongs] = useState([])
   // React bootstrap
   const [show, setShow] = useState(false)
@@ -47,7 +47,7 @@ export default function GetRondomSong() {
         Authorization: `Bearer ${token}`,
       },
     }
-    const tracks = await fetch(
+    await fetch(
       `https://api.spotify.com/v1/search?q=${getRandomSearch()}&type=${type}&offset=${randomOffset}`,
       artistParams
     )
@@ -60,6 +60,7 @@ export default function GetRondomSong() {
   return (
     <div className="SearchWindow">
       <button
+        type="button"
         className="ui-button fancy-button bg-gradient1 showView"
         onClick={handleShow}
       >
@@ -69,6 +70,7 @@ export default function GetRondomSong() {
         <Offcanvas.Header closeButton />
         <Offcanvas.Body>
           <button
+            type="button"
             className="ui-button fancy-button pop-onhover bg-gradient1 showView"
             onClick={search}
           >
@@ -87,3 +89,5 @@ export default function GetRondomSong() {
     </div>
   )
 }
+
+export default GetRondomSong
