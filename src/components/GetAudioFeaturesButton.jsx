@@ -43,8 +43,6 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
         features.valence = data.valence
       })
 
-    console.log(features)
-
     if (flag === 0) {
       dispatch({ type: 'send_to_slotA', payload: features })
       dispatch({ type: 'set_infoA', payload: songInfo })
