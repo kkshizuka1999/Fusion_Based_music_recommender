@@ -5,6 +5,7 @@ import { useState } from 'react'
 import '../index.css'
 import SearchView from './SearchView'
 import Slot from './Slot'
+import '../button.scss'
 
 export default function Search() {
   //const [searchInput, setSearchInput] = useState("")
@@ -34,9 +35,11 @@ export default function Search() {
 
   return (
     <div className='SearchWindow'>
-      <Button variant='primary' onClick={handleShow} className="showView">
-        Set Song to Slot1
-      </Button>
+      <button className="ui-button fancy-button bg-gradient1 showView" onClick={handleShow}>
+        <span class="setsong-btn">
+          Set to Slot1
+        </span>
+      </button>
       <Offcanvas show={show} onHide={handleClose} placement="start">
         <Offcanvas.Header closeButton />
         <Offcanvas.Body>

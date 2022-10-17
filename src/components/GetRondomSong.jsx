@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Button, Offcanvas } from 'react-bootstrap';
 import '../index.css'
+import '../button.scss'
 import SearchView from './SearchView';
 import Slot from './Slot';
 
@@ -26,6 +27,8 @@ export default function GetRondomSong() {
       case 1:
         randomSearch = '%20' + randomCharacter + '%20';
         break;
+      default:
+        return randomSearch;
     }
     return randomSearch;
   }
@@ -51,15 +54,19 @@ export default function GetRondomSong() {
 
   return (
     <div className='SearchWindow'>
-      <Button variant='primary' onClick={handleShow} className="showView">
-        Set Song to Slot2
-      </Button>
+      <button className="ui-button fancy-button bg-gradient1 showView" onClick={handleShow}>
+        <span class="setsong-btn">
+          Set to Slot2
+        </span>
+      </button>
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton />
         <Offcanvas.Body>
-          <Button className="random-btn" onClick={search}>
-            RondomSong
-          </Button>
+          <button className="ui-button fancy-button pop-onhover bg-gradient1 showView" onClick={search}>
+            <span class="setsong-btn">
+              RondomSong
+            </span>
+          </button>
           <Container>
             <SearchView songs={songs} flag={1} />
           </Container>

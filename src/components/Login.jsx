@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Container } from 'react-bootstrap'
+import '../button.scss'
 
 export default function Login() {
   const CLIENT_ID = "31ba0a4e4e904836bff6ac72f5de9f4b"
@@ -20,12 +21,10 @@ export default function Login() {
   )}`
 
   return (
-    <div>
-      <Container>
-        <Button href={AUTH_URL}>
-          Login with Spotify
-        </Button>
-      </Container>
-    </div>
+    <a href={AUTH_URL} class="ui-button fancy-button pop-onhover bg-gradient2">
+      <span class="auth-btn">
+        Login with Spotify
+      </span>
+    </a>
   )
 }

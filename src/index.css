@@ -22,7 +22,7 @@ button .LogIO{
 }
 
 .SearchWindow{
-  display:block;
+  display: block;
   width: 50%;
 }
 
@@ -47,5 +47,4 @@ td, label{
   padding: 10px;
   font-weight: 800;
 }
-
 
