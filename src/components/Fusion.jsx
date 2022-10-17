@@ -1,6 +1,5 @@
 import React from 'react'
 import { useContext } from 'react'
-import { Button } from 'react-bootstrap'
 import { Context } from '../utils/Store'
 
 export default function Fusion() {
