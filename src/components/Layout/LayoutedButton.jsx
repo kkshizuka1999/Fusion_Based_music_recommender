@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LayoutedButton({info}) {
+export default function LayoutedButton({ info }) {
   return (
     <button className="rounded-pill">
       {info}

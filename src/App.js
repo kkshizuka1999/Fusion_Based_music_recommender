@@ -1,20 +1,19 @@
-import Login from './components/Login';
-import { useContext, useEffect, useState } from 'react';
-import GetRondomSong from './components/GetRondomSong';
-import Search from './components/Search';
-import Fusion from './components/Fusion';
-import './index.css';
-import RecommendationView from './components/RecommendationView';
-import { Context } from './utils/Store';
-import { Button, Container } from 'react-bootstrap';
-import Player from './components/Player';
-import Layout from './components/Layout/Layout';
+import { useContext, useEffect, useState } from 'react'
+import { Container } from 'react-bootstrap'
+import Login from './components/Login'
+import GetRondomSong from './components/GetRondomSong'
+import Search from './components/Search'
+import Fusion from './components/Fusion'
+import './index.css'
+import RecommendationView from './components/RecommendationView'
+import { Context } from './utils/Store'
+import Player from './components/Player'
+import Layout from './components/Layout/Layout'
 import Spacer from './utils/Spacer'
 import './button.scss'
 
-
 function App() {
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState('')
   const [state] = useContext(Context)
   useEffect(() => {
     const hash = window.location.hash
