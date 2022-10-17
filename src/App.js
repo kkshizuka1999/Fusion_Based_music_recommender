@@ -12,7 +12,7 @@ import Layout from './components/Layout/Layout'
 import Spacer from './utils/Spacer'
 import './button.scss'
 
-function App() {
+const App = () => {
   const [token, setToken] = useState('')
   const [state] = useContext(Context)
   useEffect(() => {
