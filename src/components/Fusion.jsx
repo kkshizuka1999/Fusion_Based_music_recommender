@@ -19,8 +19,10 @@ const Fusion = () => {
       },
     }
     await fetch(
-      `https://api.spotify.com/v1/recommendations?seed_tracks=${slotA.id},${
-        slotB.id
+      `https://api.spotify.com/v1/recommendations?seed_tracks=${
+        fusion.basesong[0].checked
+          ? fusion.basesong[0].value
+          : fusion.basesong[1].value
       }&target_acousticness=${
         fusion.acousticness[0].checked
           ? fusion.acousticness[0].value
@@ -83,6 +85,17 @@ const Fusion = () => {
     <div className="mb-2 d-flex flex-column align-items-center justify-content-center">
       <form name="fusion">
         <table>
+          <tr>
+            <td>
+              <input type="radio" name="basesong" value={slotA.id} />
+            </td>
+            <td>
+              <label htmlFor="acousticness">ベースソング</label>
+            </td>
+            <td>
+              <input type="radio" name="basesong" value={slotB.id} />
+            </td>
+          </tr>
           <tr>
             <td>
               <input
