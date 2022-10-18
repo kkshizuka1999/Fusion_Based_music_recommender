@@ -8,6 +8,7 @@ import Slot from './Slot'
 import { StoreContext } from '../utils/Store'
 
 const GetRondomSong = () => {
+  let resSongs = {}
   const [songs, setSongs] = useState([])
   // React bootstrap
   const [show, setShow] = useState(false)
@@ -38,6 +39,7 @@ const GetRondomSong = () => {
   }
 
   async function search() {
+    resSongs = {}
     const { token } = store
     const randomOffset = Math.ceil(Math.random() * 1000)
     const type = 'track'
@@ -50,13 +52,23 @@ const GetRondomSong = () => {
       },
     }
     await fetch(
-      `https://api.spotify.com/v1/search?q=${getRandomSearch()}&type=${type}&offset=${randomOffset}`,
+      `https://api.spotify.com/v1/search?q=${getRandomSearch()}&type=${type}&offset=${randomOffset}&limit=50`,
       artistParams
     )
       .then((response) => response.json())
       .then((data) => {
-        setSongs(data.tracks.items)
+        resSongs = data.tracks.items
       })
+    for (let i = resSongs.length - 1; i > 0; i -= 1) {
+      // 0〜(i+1)の範囲で値を取得
+      const r = Math.floor(Math.random() * (i + 1))
+
+      // 要素の並び替えを実行
+      const tmp = resSongs[i]
+      resSongs[i] = resSongs[r]
+      resSongs[r] = tmp
+    }
+    setSongs(resSongs)
   }
 
   return (
