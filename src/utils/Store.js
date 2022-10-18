@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useMemo } from 'react'
 
 const initialState = {
+  token: '',
   slotA: {},
   slotB: {},
   songInfoA: {},
@@ -14,6 +15,8 @@ export const Context = createContext(initialState)
 export const Store = ({ children }) => {
   const [state, dispatch] = useReducer((rstate, action) => {
     switch (action.type) {
+      case 'set_token':
+        return { ...rstate, token: action.payload }
       case 'send_to_slotA':
         return { ...rstate, slotA: action.payload }
 

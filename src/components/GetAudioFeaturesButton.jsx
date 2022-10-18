@@ -18,7 +18,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
       artists: artistsname,
       uri,
     }
-    const token = window.localStorage.getItem('token')
+    const { token } = state
     // Get request using search to get the ArtistID
     const AFParams = {
       method: 'GET',

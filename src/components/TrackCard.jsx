@@ -2,11 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import PlayButton from './PlayButton'
 
-interface Props {
-  song: Spotify.Track
-}
-
-const TrackCard: React.FC<Props> = ({ song }) => {
+const TrackCard = ({ song }) => {
   return (
     <Card>
       <Card.Img src={song.album.images[0].url} />

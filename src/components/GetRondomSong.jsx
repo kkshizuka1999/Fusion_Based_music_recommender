@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Offcanvas } from 'react-bootstrap'
 import '../index.css'
 import '../button.scss'
 import SearchView from './SearchView'
 import Slot from './Slot'
+import { Context } from '../utils/Store'
 
 const GetRondomSong = () => {
   const [songs, setSongs] = useState([])
@@ -12,6 +13,7 @@ const GetRondomSong = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const [state] = useContext(Context)
 
   function getRandomSearch() {
     // A list of all characters that can be chosen.
@@ -36,7 +38,7 @@ const GetRondomSong = () => {
   }
 
   async function search() {
-    const token = window.localStorage.getItem('token')
+    const { token } = state
     const randomOffset = Math.ceil(Math.random() * 1000)
     const type = 'track'
     // Get request using search to get the ArtistID

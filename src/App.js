@@ -11,10 +11,11 @@ import Player from './components/Player'
 import Layout from './components/Layout/Layout'
 import Spacer from './utils/Spacer'
 import './button.scss'
+import Logout from './components/Logout'
 
 const App = () => {
-  const [token, setToken] = useState('')
-  const [state] = useContext(Context)
+  const [state, dispatch] = useContext(Context)
+  const { token } = state
   useEffect(() => {
     const { hash } = window.location
     let localToken = window.localStorage.getItem('token')
@@ -27,32 +28,16 @@ const App = () => {
         .find((elem) => elem.startsWith('access_token'))
         .split('=')[1]
       window.location.hash = ''
-      window.localStorage.setItem('token', localToken)
-      setToken(localToken)
+      dispatch({ type: 'set_token', payload: localToken })
     }
   }, [])
-
-  const logout = () => {
-    setToken('')
-    window.localStorage.removeItem('token')
-  }
 
   return (
     <Layout>
       <div className="mb-5">
         <header className="App-header">
           <h1>Fusion-Based Recommender with Spotify API</h1>
-          {!token ? (
-            <Login />
-          ) : (
-            <button
-              type="button"
-              onClick={logout}
-              className="ui-button fancy-button pop-onhover bg-gradient2"
-            >
-              <span className="auth-btn">Logout</span>
-            </button>
-          )}
+          {!token ? <Login /> : <Logout />}
           <Spacer size={16} />
         </header>
         <div className="frontview">

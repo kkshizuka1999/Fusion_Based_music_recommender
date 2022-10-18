@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SpotifyWebPlayer from 'react-spotify-web-playback/lib'
+import { Context } from '../utils/Store'
 
 const Player = ({ trackUri }) => {
+  const [state] = useContext(Context)
   const [play, setPlay] = useState(false)
-  const token = window.localStorage.getItem('token')
+  const { token } = state
   useEffect(() => setPlay(true), [trackUri])
   if (!token) return null
   return (
@@ -11,8 +13,8 @@ const Player = ({ trackUri }) => {
       token={token}
       initialVolume={0.1}
       showSaveIcon
-      callback={(state) => {
-        if (state.isPlaying) {
+      callback={(callbackState) => {
+        if (callbackState.isPlaying) {
           setPlay(false)
         }
       }}

@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, InputGroup, FormControl, Offcanvas } from 'react-bootstrap'
 import '../index.css'
 import SearchView from './SearchView'
 import Slot from './Slot'
 import '../button.scss'
+import { Context } from '../utils/Store'
 
 const Search = () => {
   // const [searchInput, setSearchInput] = useState("")
+  const [state] = useContext(Context)
   const [songs, setSongs] = useState([])
   // React bootstrap
   const [show, setShow] = useState(false)
@@ -15,7 +17,7 @@ const Search = () => {
   const handleShow = () => setShow(true)
 
   async function search(input) {
-    const token = window.localStorage.getItem('token')
+    const { token } = state
     // Get request using search to get the ArtistID
     const artistParams = {
       method: 'GET',
