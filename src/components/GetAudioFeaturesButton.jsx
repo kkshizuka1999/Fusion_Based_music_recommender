@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BsPlusLg } from 'react-icons/bs'
-import { Context } from '../utils/Store'
+import { storeContext } from '../utils/Store'
 import '../index.css'
 
 const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
-  const [state, dispatch] = useContext(Context)
+  const [state, dispatch] = useContext(storeContext)
   let features = {}
   let songInfo = {}
   async function getAF(flag, id, img, songname, artistsname, uri) {

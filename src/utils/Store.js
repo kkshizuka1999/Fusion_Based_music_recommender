@@ -10,7 +10,7 @@ const initialState = {
   songUri: '',
 }
 
-export const Context = createContext(initialState)
+export const storeContext = createContext(initialState)
 
 export const Store = ({ children }) => {
   const [state, dispatch] = useReducer((rstate, action) => {

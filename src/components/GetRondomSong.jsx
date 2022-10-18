@@ -5,7 +5,7 @@ import '../index.css'
 import '../button.scss'
 import SearchView from './SearchView'
 import Slot from './Slot'
-import { Context } from '../utils/Store'
+import { storeContext } from '../utils/Store'
 
 const GetRondomSong = () => {
   const [songs, setSongs] = useState([])
@@ -13,7 +13,7 @@ const GetRondomSong = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const [state] = useContext(Context)
+  const [state] = useContext(storeContext)
 
   function getRandomSearch() {
     // A list of all characters that can be chosen.

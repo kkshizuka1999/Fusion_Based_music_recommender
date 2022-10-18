@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { Context } from '../utils/Store'
+import { storeContext } from '../utils/Store'
 
 const Fusion = () => {
   let recommendation = {}
-  const [state, dispatch] = useContext(Context)
+  const [state, dispatch] = useContext(storeContext)
   const { slotA } = state
   const { slotB } = state
 

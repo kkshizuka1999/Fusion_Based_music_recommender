@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 
-import { Context } from '../utils/Store'
+import { storeContext } from '../utils/Store'
 
 const Logout = () => {
-  const [state, dispatch] = useContext(Context)
+  const [state, dispatch] = useContext(storeContext)
   const logout = () => {
     dispatch({ type: 'set_token', payload: '' })
     window.location.reload()
