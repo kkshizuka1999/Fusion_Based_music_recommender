@@ -19,7 +19,11 @@ const Slot = ({ flag }) => {
         <Card.Body>
           <Card.Title>{slotInfo.name}</Card.Title>
           <Card.Subtitle>{slotInfo.artists}</Card.Subtitle>
-          <PlayButton uri={slotInfo.uri} />
+          <div className="mb-2 d-flex flex-row align-items-center justify-content-end">
+            <div className="pl-2">
+              <PlayButton uri={slotInfo.uri} />
+            </div>
+          </div>
         </Card.Body>
       </Card>
     </div>
