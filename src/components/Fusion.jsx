@@ -4,6 +4,8 @@ import { Context } from '../utils/Store'
 const Fusion = () => {
   let recommendation = {}
   const [state, dispatch] = useContext(Context)
+  const { slotA } = state
+  const { slotB } = state
 
   async function getRecommendation() {
     recommendation = {}
@@ -75,40 +77,38 @@ const Fusion = () => {
       recommendation[i] = recommendation[r]
       recommendation[r] = tmp
     }
-
     dispatch({ type: 'set_recommendation_info', payload: recommendation })
   }
 
   return (
-    <div>
+    <div className="mb-2 d-flex flex-column align-items-center justify-content-center">
       <form name="fusion">
         <table>
           <tr>
-            <div className="radio">
+            <td>
               <input
-                className="radio-input-1"
-                id="acousticness"
                 type="radio"
                 name="acousticness"
-                value={state.slotA.acousticness}
+                value={slotA.acousticness}
               />
-              <label htmlFor="acousticness" className="radio-label" />
+            </td>
+            <td>
+              <label htmlFor="acousticness">acousticness</label>
+            </td>
+            <td>
               <input
-                className="radio-input-2"
-                id="acousticness-2"
                 type="radio"
                 name="acousticness"
-                value={state.slotB.acousticness}
+                value={slotB.acousticness}
               />
-              <label htmlFor="acousticness-2" className="radio-label-2" />
-            </div>
+            </td>
           </tr>
           <tr>
             <td>
               <input
                 type="radio"
                 name="danceability"
-                value={state.slotA.danceability}
+                value={slotA.danceability}
               />
             </td>
             <td>
@@ -118,19 +118,19 @@ const Fusion = () => {
               <input
                 type="radio"
                 name="danceability"
-                value={state.slotB.danceability}
+                value={slotB.danceability}
               />
             </td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="energy" value={state.slotA.energy} />
+              <input type="radio" name="energy" value={slotA.energy} />
             </td>
             <td>
               <label htmlFor="energy">energy</label>
             </td>
             <td>
-              <input type="radio" name="energy" value={state.slotB.energy} />
+              <input type="radio" name="energy" value={slotB.energy} />
             </td>
           </tr>
           <tr>
@@ -138,7 +138,7 @@ const Fusion = () => {
               <input
                 type="radio"
                 name="instrumentalness"
-                value={state.slotA.instrumentalness}
+                value={slotA.instrumentalness}
               />
             </td>
             <td>
@@ -148,68 +148,52 @@ const Fusion = () => {
               <input
                 type="radio"
                 name="instrumentalness"
-                value={state.slotB.instrumentalness}
+                value={slotB.instrumentalness}
               />
             </td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="key" value={state.slotA.key} />
+              <input type="radio" name="key" value={slotA.key} />
             </td>
             <td>
               <label htmlFor="key">key</label>
             </td>
             <td>
-              <input type="radio" name="key" value={state.slotB.key} />
+              <input type="radio" name="key" value={slotB.key} />
             </td>
           </tr>
           <tr>
             <td>
-              <input
-                type="radio"
-                name="liveness"
-                value={state.slotA.liveness}
-              />
+              <input type="radio" name="liveness" value={slotA.liveness} />
             </td>
             <td>
               <label htmlFor="liveness">liveness</label>
             </td>
             <td>
-              <input
-                type="radio"
-                name="liveness"
-                value={state.slotB.liveness}
-              />
+              <input type="radio" name="liveness" value={slotB.liveness} />
             </td>
           </tr>
           <tr>
             <td>
-              <input
-                type="radio"
-                name="loudness"
-                value={state.slotA.loudness}
-              />
+              <input type="radio" name="loudness" value={slotA.loudness} />
             </td>
             <td>
               <label htmlFor="loudness">loudness</label>
             </td>
             <td>
-              <input
-                type="radio"
-                name="loudness"
-                value={state.slotB.loudness}
-              />
+              <input type="radio" name="loudness" value={slotB.loudness} />
             </td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="mode" value={state.slotA.mode} />
+              <input type="radio" name="mode" value={slotA.mode} />
             </td>
             <td>
               <label htmlFor="mode">mode</label>
             </td>
             <td>
-              <input type="radio" name="mode" value={state.slotB.mode} />
+              <input type="radio" name="mode" value={slotB.mode} />
             </td>
           </tr>
           <tr>
@@ -217,7 +201,7 @@ const Fusion = () => {
               <input
                 type="radio"
                 name="speechiness"
-                value={state.slotA.speechiness}
+                value={slotA.speechiness}
               />
             </td>
             <td>
@@ -227,43 +211,41 @@ const Fusion = () => {
               <input
                 type="radio"
                 name="speechiness"
-                value={state.slotB.speechiness}
+                value={slotB.speechiness}
               />
             </td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="tempo" value={state.slotA.tempo} />
+              <input type="radio" name="tempo" value={slotA.tempo} />
             </td>
             <td>
               <label htmlFor="tempo">tempo</label>
             </td>
             <td>
-              <input type="radio" name="tempo" value={state.slotB.tempo} />
+              <input type="radio" name="tempo" value={slotB.tempo} />
             </td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="valence" value={state.slotA.valence} />
+              <input type="radio" name="valence" value={slotA.valence} />
             </td>
             <td>
               <label htmlFor="valence">valence</label>
             </td>
             <td>
-              <input type="radio" name="valence" value={state.slotB.valence} />
+              <input type="radio" name="valence" value={slotB.valence} />
             </td>
           </tr>
         </table>
       </form>
-      <div className="center-block">
-        <button
-          type="button"
-          className="ui-button fancy-button pop-onhover bg-gradient3"
-          onClick={getRecommendation}
-        >
-          <span className="auth-btn">Fusion</span>
-        </button>
-      </div>
+      <button
+        type="button"
+        className="ui-button fancy-button pop-onhover bg-gradient3"
+        onClick={getRecommendation}
+      >
+        <span className="auth-btn">Fusion</span>
+      </button>
     </div>
   )
 }

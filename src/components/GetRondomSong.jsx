@@ -60,7 +60,7 @@ const GetRondomSong = () => {
   }
 
   return (
-    <div className="SearchWindow">
+    <div>
       <button
         type="button"
         className="ui-button fancy-button bg-gradient1 showView"

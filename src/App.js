@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import React, { useContext, useEffect } from 'react'
 import Login from './components/Login'
 import GetRondomSong from './components/GetRondomSong'
 import Search from './components/Search'
@@ -34,25 +33,31 @@ const App = () => {
 
   return (
     <Layout>
-      <div className="mb-5">
-        <header className="App-header">
+      <div>
+        <header className="mb-2 d-flex flex-column align-items-center justify-content-center">
           <h1>Fusion-Based Recommender with Spotify API</h1>
           {!token ? <Login /> : <Logout />}
           <Spacer size={16} />
         </header>
-        <div className="frontview">
-          <Search />
-          <Fusion />
-          <GetRondomSong />
-        </div>
-        <Container>
-          <RecommendationView songs={state.recommendationInfo} />
-          <footer className="footer">
-            <div className="fixed-bottom">
-              <Player trackUri={state.songUri} />
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <Search />
             </div>
-          </footer>
-        </Container>
+            <div className="col">
+              <Fusion />
+            </div>
+            <div className="col">
+              <GetRondomSong />
+            </div>
+          </div>
+        </div>
+        <RecommendationView songs={state.recommendationInfo} />
+        <footer className="footer">
+          <div className="fixed-bottom">
+            <Player trackUri={state.songUri} />
+          </div>
+        </footer>
       </div>
     </Layout>
   )
