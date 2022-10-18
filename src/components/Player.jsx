@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import SpotifyWebPlayer from 'react-spotify-web-playback/lib'
-import { storeContext } from '../utils/Store'
+import { StoreContext } from '../utils/Store'
 
 const Player = ({ trackUri }) => {
-  const [state] = useContext(storeContext)
+  const [state] = useContext(StoreContext)
   const [play, setPlay] = useState(false)
   const { token } = state
   useEffect(() => setPlay(true), [trackUri])

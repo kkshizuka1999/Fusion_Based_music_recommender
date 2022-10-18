@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Card } from 'react-bootstrap'
-import { storeContext } from '../utils/Store'
+import { StoreContext } from '../utils/Store'
 import PlayButton from './PlayButton'
 
 const Slot = ({ flag }) => {
-  const [state] = useContext(storeContext)
+  const [state] = useContext(StoreContext)
   let slotInfo = {}
   if (flag === 0) {
     slotInfo = state.songInfoA

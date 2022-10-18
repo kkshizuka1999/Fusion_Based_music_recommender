@@ -3,7 +3,7 @@ import PlayButton from './PlayButton'
 
 const TrackCard = ({ song }) => {
   return (
-    <div key={song.id} className="border-bottom border-info px-2 mt-3">
+    <div className="border-bottom border-info px-2 mt-3">
       <div className="d-flex flex-row align-items-center justify-content-start">
         <img src={song.album.images[0].url} style={{ height: '64px' }} alt="" />
         <div className="px-2 mt-3 lm-3">

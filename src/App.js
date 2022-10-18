@@ -5,7 +5,7 @@ import Search from './components/Search'
 import Fusion from './components/Fusion'
 import './index.css'
 import RecommendationView from './components/RecommendationView'
-import { Context } from './utils/Store'
+import { StoreContext } from './utils/Store'
 import Player from './components/Player'
 import Layout from './components/Layout/Layout'
 import Spacer from './utils/Spacer'
@@ -13,7 +13,7 @@ import './button.scss'
 import Logout from './components/Logout'
 
 const App = () => {
-  const [state, dispatch] = useContext(Context)
+  const [state, dispatch] = useContext(StoreContext)
   const { token } = state
   useEffect(() => {
     const { hash } = window.location

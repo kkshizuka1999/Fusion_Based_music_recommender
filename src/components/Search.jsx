@@ -5,11 +5,11 @@ import '../index.css'
 import SearchView from './SearchView'
 import Slot from './Slot'
 import '../button.scss'
-import { Context } from '../utils/Store'
+import { StoreContext } from '../utils/Store'
 
 const Search = () => {
   // const [searchInput, setSearchInput] = useState("")
-  const [state] = useContext(Context)
+  const [state] = useContext(StoreContext)
   const [songs, setSongs] = useState([])
   // React bootstrap
   const [show, setShow] = useState(false)

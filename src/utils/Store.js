@@ -10,7 +10,7 @@ const initialState = {
   songUri: '',
 }
 
-export const storeContext = createContext(initialState)
+export const StoreContext = createContext(initialState)
 
 export const Store = ({ children }) => {
   const [state, dispatch] = useReducer((rstate, action) => {
@@ -42,7 +42,9 @@ export const Store = ({ children }) => {
 
   return useMemo(() => {
     return (
-      <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+      <StoreContext.Provider value={[state, dispatch]}>
+        {children}
+      </StoreContext.Provider>
     )
   })
 }
