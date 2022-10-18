@@ -3,14 +3,13 @@ import { StoreContext } from '../utils/Store'
 
 const Fusion = () => {
   let recommendation = {}
-  const [state, dispatch] = useContext(StoreContext)
-  const { slotA } = state
-  const { slotB } = state
+  const [store, setStore] = useContext(StoreContext)
+  const { slotA, slotB } = store
 
   async function getRecommendation() {
     recommendation = {}
     const { fusion } = document
-    const { token } = state
+    const { token } = store
     // Get request using search to get the ArtistID
     const AFParams = {
       method: 'GET',
@@ -20,9 +19,9 @@ const Fusion = () => {
       },
     }
     await fetch(
-      `https://api.spotify.com/v1/recommendations?seed_tracks=${
-        state.slotA.id
-      },${state.slotB.id}&target_acousticness=${
+      `https://api.spotify.com/v1/recommendations?seed_tracks=${slotA.id},${
+        slotB.id
+      }&target_acousticness=${
         fusion.acousticness[0].checked
           ? fusion.acousticness[0].value
           : fusion.acousticness[1].value
@@ -34,29 +33,29 @@ const Fusion = () => {
         fusion.energy[0].checked
           ? fusion.energy[0].value
           : fusion.energy[1].value
-      }&target_instrumentalness${
+      }&target_instrumentalness=${
         fusion.instrumentalness[0].checked
           ? fusion.instrumentalness[0].value
           : fusion.instrumentalness[1].value
-      }&target_key${
+      }&target_key=${
         fusion.key[0].checked ? fusion.key[0].value : fusion.key[1].value
-      }&target_liveness${
+      }&target_liveness=${
         fusion.liveness[0].checked
           ? fusion.liveness[0].value
           : fusion.liveness[1].value
-      }&target_loudness${
+      }&target_loudness=${
         fusion.loudness[0].checked
           ? fusion.loudness[0].value
           : fusion.loudness[1].value
-      }&target_mode${
+      }&target_mode=${
         fusion.mode[0].checked ? fusion.mode[0].value : fusion.mode[1].value
-      }&target_speechiness${
+      }&target_speechiness=${
         fusion.speechiness[0].checked
           ? fusion.speechiness[0].value
           : fusion.speechiness[1].value
-      }&target_tempo${
+      }&target_tempo=${
         fusion.tempo[0].checked ? fusion.tempo[0].value : fusion.tempo[1].value
-      }&target_valence${
+      }&target_valence=${
         fusion.valence[0].checked
           ? fusion.valence[0].value
           : fusion.valence[1].value
@@ -68,16 +67,16 @@ const Fusion = () => {
         recommendation = data.tracks
       })
 
-    for (let i = recommendation.length - 1; i > 0; i -= 1) {
-      // 0〜(i+1)の範囲で値を取得
-      const r = Math.floor(Math.random() * (i + 1))
+    // for (let i = recommendation.length - 1; i > 0; i -= 1) {
+    //   // 0〜(i+1)の範囲で値を取得
+    //   const r = Math.floor(Math.random() * (i + 1))
 
-      // 要素の並び替えを実行
-      const tmp = recommendation[i]
-      recommendation[i] = recommendation[r]
-      recommendation[r] = tmp
-    }
-    dispatch({ type: 'set_recommendation_info', payload: recommendation })
+    //   // 要素の並び替えを実行
+    //   const tmp = recommendation[i]
+    //   recommendation[i] = recommendation[r]
+    //   recommendation[r] = tmp
+    // }
+    setStore({ type: 'set_recommendation_info', payload: recommendation })
   }
 
   return (

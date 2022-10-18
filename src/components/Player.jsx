@@ -3,9 +3,9 @@ import SpotifyWebPlayer from 'react-spotify-web-playback/lib'
 import { StoreContext } from '../utils/Store'
 
 const Player = ({ trackUri }) => {
-  const [state] = useContext(StoreContext)
+  const [store] = useContext(StoreContext)
   const [play, setPlay] = useState(false)
-  const { token } = state
+  const { token } = store
   useEffect(() => setPlay(true), [trackUri])
   if (!token) return null
   return (

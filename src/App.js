@@ -13,8 +13,8 @@ import './button.scss'
 import Logout from './components/Logout'
 
 const App = () => {
-  const [state, dispatch] = useContext(StoreContext)
-  const { token } = state
+  const [store, setStore] = useContext(StoreContext)
+  const { token } = store
   useEffect(() => {
     const { hash } = window.location
     let localToken = window.localStorage.getItem('token')
@@ -27,7 +27,7 @@ const App = () => {
         .find((elem) => elem.startsWith('access_token'))
         .split('=')[1]
       window.location.hash = ''
-      dispatch({ type: 'set_token', payload: localToken })
+      setStore({ type: 'set_token', payload: localToken })
     }
   }, [])
 
@@ -52,10 +52,10 @@ const App = () => {
             </div>
           </div>
         </div>
-        <RecommendationView songs={state.recommendationInfo} />
+        <RecommendationView songs={store.recommendationInfo} />
         <footer className="footer">
           <div className="fixed-bottom">
-            <Player trackUri={state.songUri} />
+            <Player trackUri={store.songUri} />
           </div>
         </footer>
       </div>

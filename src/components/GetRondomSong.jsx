@@ -13,7 +13,7 @@ const GetRondomSong = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const [state] = useContext(StoreContext)
+  const [store] = useContext(StoreContext)
 
   function getRandomSearch() {
     // A list of all characters that can be chosen.
@@ -38,7 +38,7 @@ const GetRondomSong = () => {
   }
 
   async function search() {
-    const { token } = state
+    const { token } = store
     const randomOffset = Math.ceil(Math.random() * 1000)
     const type = 'track'
     // Get request using search to get the ArtistID

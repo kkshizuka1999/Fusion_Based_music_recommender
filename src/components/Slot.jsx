@@ -4,12 +4,12 @@ import { StoreContext } from '../utils/Store'
 import PlayButton from './PlayButton'
 
 const Slot = ({ flag }) => {
-  const [state] = useContext(StoreContext)
+  const [store] = useContext(StoreContext)
   let slotInfo = {}
   if (flag === 0) {
-    slotInfo = state.songInfoA
+    slotInfo = store.songInfoA
   } else {
-    slotInfo = state.songInfoB
+    slotInfo = store.songInfoB
   }
 
   return (

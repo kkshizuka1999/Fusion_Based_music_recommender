@@ -5,7 +5,7 @@ import { StoreContext } from '../utils/Store'
 import '../index.css'
 
 const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
-  const [state, dispatch] = useContext(StoreContext)
+  const [store, setStore] = useContext(StoreContext)
   let features = {}
   let songInfo = {}
   async function getAF(flag, id, img, songname, artistsname, uri) {
@@ -18,7 +18,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
       artists: artistsname,
       uri,
     }
-    const { token } = state
+    const { token } = store
     // Get request using search to get the ArtistID
     const AFParams = {
       method: 'GET',
@@ -44,11 +44,11 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
       })
 
     if (flag === 0) {
-      dispatch({ type: 'send_to_slotA', payload: features })
-      dispatch({ type: 'set_infoA', payload: songInfo })
+      setStore({ type: 'send_to_slotA', payload: features })
+      setStore({ type: 'set_infoA', payload: songInfo })
     } else {
-      dispatch({ type: 'send_to_slotB', payload: features })
-      dispatch({ type: 'set_infoB', payload: songInfo })
+      setStore({ type: 'send_to_slotB', payload: features })
+      setStore({ type: 'set_infoB', payload: songInfo })
     }
   }
   return (

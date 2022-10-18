@@ -9,7 +9,7 @@ import { StoreContext } from '../utils/Store'
 
 const Search = () => {
   // const [searchInput, setSearchInput] = useState("")
-  const [state] = useContext(StoreContext)
+  const [store] = useContext(StoreContext)
   const [songs, setSongs] = useState([])
   // React bootstrap
   const [show, setShow] = useState(false)
@@ -17,7 +17,7 @@ const Search = () => {
   const handleShow = () => setShow(true)
 
   async function search(input) {
-    const { token } = state
+    const { token } = store
     // Get request using search to get the ArtistID
     const artistParams = {
       method: 'GET',

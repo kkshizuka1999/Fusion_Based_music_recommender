@@ -3,10 +3,10 @@ import { BsPlayFill } from 'react-icons/bs'
 import { StoreContext } from '../utils/Store'
 
 const PlayButton = ({ uri }) => {
-  const [state, dispatch] = useContext(StoreContext)
+  const [store, setStore] = useContext(StoreContext)
 
   const handleClick = () => {
-    dispatch({ type: 'set_song_uri', payload: uri })
+    setStore({ type: 'set_song_uri', payload: uri })
   }
 
   return (
