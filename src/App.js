@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import Login from './components/Login'
 import GetRondomSong from './components/GetRondomSong'
 import Search from './components/Search'
 import Fusion from './components/Fusion'
@@ -11,6 +10,7 @@ import Layout from './components/Layout/Layout'
 import Spacer from './utils/Spacer'
 import './button.scss'
 import Logout from './components/Logout'
+import LoginComponent from './components/LoginComponent'
 
 const App = () => {
   const [store, setStore] = useContext(StoreContext)
@@ -36,7 +36,7 @@ const App = () => {
       <div>
         <header className="mb-2 d-flex flex-column align-items-center justify-content-center">
           <h1>Fusion-Based Recommender with Spotify API</h1>
-          {!token ? <Login /> : <Logout />}
+          {!token ? <LoginComponent /> : <Logout />}
           <Spacer size={16} />
         </header>
         <div className="container">
