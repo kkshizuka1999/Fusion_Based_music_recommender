@@ -2,83 +2,72 @@ import React, { useContext } from 'react'
 import { StoreContext } from '../utils/Store'
 
 const Fusion = () => {
-  let recommendation = {}
   const [store, setStore] = useContext(StoreContext)
   const { slotA, slotB } = store
+  let recommendation = []
 
-  async function getRecommendation() {
-    recommendation = {}
+  const getRecommendation = async () => {
     const { fusion } = document
     const { token } = store
-    // Get request using search to get the ArtistID
-    const AFParams = {
+    const params = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     }
-    await fetch(
-      `https://api.spotify.com/v1/recommendations?seed_tracks=${
-        fusion.basesong[0].checked
-          ? fusion.basesong[0].value
-          : fusion.basesong[1].value
-      }&target_acousticness=${
-        fusion.acousticness[0].checked
-          ? fusion.acousticness[0].value
-          : fusion.acousticness[1].value
-      }&target_danceability=${
-        fusion.danceability[0].checked
-          ? fusion.danceability[0].value
-          : fusion.danceability[1].value
-      }&target_energy=${
-        fusion.energy[0].checked
-          ? fusion.energy[0].value
-          : fusion.energy[1].value
-      }&target_instrumentalness=${
-        fusion.instrumentalness[0].checked
-          ? fusion.instrumentalness[0].value
-          : fusion.instrumentalness[1].value
-      }&target_key=${
-        fusion.key[0].checked ? fusion.key[0].value : fusion.key[1].value
-      }&target_liveness=${
-        fusion.liveness[0].checked
-          ? fusion.liveness[0].value
-          : fusion.liveness[1].value
-      }&target_loudness=${
-        fusion.loudness[0].checked
-          ? fusion.loudness[0].value
-          : fusion.loudness[1].value
-      }&target_mode=${
-        fusion.mode[0].checked ? fusion.mode[0].value : fusion.mode[1].value
-      }&target_speechiness=${
-        fusion.speechiness[0].checked
-          ? fusion.speechiness[0].value
-          : fusion.speechiness[1].value
-      }&target_tempo=${
-        fusion.tempo[0].checked ? fusion.tempo[0].value : fusion.tempo[1].value
-      }&target_valence=${
-        fusion.valence[0].checked
-          ? fusion.valence[0].value
-          : fusion.valence[1].value
-      }&limit=100`,
-      AFParams
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        recommendation = data.tracks
+    const baseUrl = 'https://api.spotify.com/v1/recommendations'
+    const baseSongItem = fusion.basesong[0].checked
+      ? fusion.basesong[0].value
+      : fusion.basesong[1].value
+    const acousticnesItem = fusion.acousticness[0].checked
+      ? fusion.acousticness[0].value
+      : fusion.acousticness[1].value
+    const danceabilityItem = fusion.danceability[0].checked
+      ? fusion.danceability[0].value
+      : fusion.danceability[1].value
+    const energyItem = fusion.energy[0].checked
+      ? fusion.energy[0].value
+      : fusion.energy[1].value
+    const instrumentalnessItem = fusion.instrumentalness[0].checked
+      ? fusion.instrumentalness[0].value
+      : fusion.instrumentalness[1].value
+    const keyItem = fusion.key[0].checked
+      ? fusion.key[0].value
+      : fusion.key[1].value
+    const livenessItem = fusion.liveness[0].checked
+      ? fusion.liveness[0].value
+      : fusion.liveness[1].value
+    const loudnessItem = fusion.loudness[0].checked
+      ? fusion.loudness[0].value
+      : fusion.loudness[1].value
+    const modeItem = fusion.mode[0].checked
+      ? fusion.mode[0].value
+      : fusion.mode[1].value
+    const speechinessItem = fusion.speechiness[0].checked
+      ? fusion.speechiness[0].value
+      : fusion.speechiness[1].value
+    const tempoItem = fusion.tempo[0].checked
+      ? fusion.tempo[0].value
+      : fusion.tempo[1].value
+    const valenceItem = fusion.valence[0].checked
+      ? fusion.valence[0].value
+      : fusion.valence[1].value
+
+    // URL構築
+    const url = `${baseUrl}?seed_tracks=${baseSongItem}&target_acousticness=${acousticnesItem}&target_danceability=${danceabilityItem}&target_energy=${energyItem}&target_instrumentalness=${instrumentalnessItem}&target_key=${keyItem}&target_liveness=${livenessItem}&target_mode=${modeItem}&target_speechiness=${speechinessItem}&target_tempo=${tempoItem}&target_valence=${valenceItem}&target_loudness=${loudnessItem}&limit=100`
+    try {
+      const response = await fetch(url, params)
+      recommendation = (await response.json()).tracks
+      setStore({
+        type: 'set_recommendation_info',
+        payload: recommendation,
       })
-
-    // for (let i = recommendation.length - 1; i > 0; i -= 1) {
-    //   // 0〜(i+1)の範囲で値を取得
-    //   const r = Math.floor(Math.random() * (i + 1))
-
-    //   // 要素の並び替えを実行
-    //   const tmp = recommendation[i]
-    //   recommendation[i] = recommendation[r]
-    //   recommendation[r] = tmp
-    // }
-    setStore({ type: 'set_recommendation_info', payload: recommendation })
+    } catch (error) {
+      // エラーハンドリング記述
+      // 一旦consoleで出しておく
+      console.log(error)
+    }
   }
 
   return (
@@ -90,7 +79,7 @@ const Fusion = () => {
               <input type="radio" name="basesong" value={slotA.id} />
             </td>
             <td>
-              <label htmlFor="acousticness">ベースソング</label>
+              <label htmlFor="acousticness">Seed Song</label>
             </td>
             <td>
               <input type="radio" name="basesong" value={slotB.id} />
@@ -105,7 +94,7 @@ const Fusion = () => {
               />
             </td>
             <td>
-              <label htmlFor="acousticness">acousticness</label>
+              <label htmlFor="acousticness">Acousticness</label>
             </td>
             <td>
               <input
@@ -124,7 +113,7 @@ const Fusion = () => {
               />
             </td>
             <td>
-              <label htmlFor="danceability">danceability</label>
+              <label htmlFor="danceability">Danceability</label>
             </td>
             <td>
               <input
@@ -139,7 +128,7 @@ const Fusion = () => {
               <input type="radio" name="energy" value={slotA.energy} />
             </td>
             <td>
-              <label htmlFor="energy">energy</label>
+              <label htmlFor="energy">Energy</label>
             </td>
             <td>
               <input type="radio" name="energy" value={slotB.energy} />
@@ -154,7 +143,7 @@ const Fusion = () => {
               />
             </td>
             <td>
-              <label htmlFor="instrumentalness">instrumentalness</label>
+              <label htmlFor="instrumentalness">Instrumentalness</label>
             </td>
             <td>
               <input
@@ -169,7 +158,7 @@ const Fusion = () => {
               <input type="radio" name="key" value={slotA.key} />
             </td>
             <td>
-              <label htmlFor="key">key</label>
+              <label htmlFor="key">Key</label>
             </td>
             <td>
               <input type="radio" name="key" value={slotB.key} />
@@ -180,7 +169,7 @@ const Fusion = () => {
               <input type="radio" name="liveness" value={slotA.liveness} />
             </td>
             <td>
-              <label htmlFor="liveness">liveness</label>
+              <label htmlFor="liveness">Liveness</label>
             </td>
             <td>
               <input type="radio" name="liveness" value={slotB.liveness} />
@@ -191,7 +180,7 @@ const Fusion = () => {
               <input type="radio" name="loudness" value={slotA.loudness} />
             </td>
             <td>
-              <label htmlFor="loudness">loudness</label>
+              <label htmlFor="loudness">Loudness</label>
             </td>
             <td>
               <input type="radio" name="loudness" value={slotB.loudness} />
@@ -202,7 +191,7 @@ const Fusion = () => {
               <input type="radio" name="mode" value={slotA.mode} />
             </td>
             <td>
-              <label htmlFor="mode">mode</label>
+              <label htmlFor="mode">Mode</label>
             </td>
             <td>
               <input type="radio" name="mode" value={slotB.mode} />
@@ -217,7 +206,7 @@ const Fusion = () => {
               />
             </td>
             <td>
-              <label htmlFor="speechiness">speechiness</label>
+              <label htmlFor="speechiness">Speechiness</label>
             </td>
             <td>
               <input
@@ -232,7 +221,7 @@ const Fusion = () => {
               <input type="radio" name="tempo" value={slotA.tempo} />
             </td>
             <td>
-              <label htmlFor="tempo">tempo</label>
+              <label htmlFor="tempo">Tempo</label>
             </td>
             <td>
               <input type="radio" name="tempo" value={slotB.tempo} />
@@ -243,7 +232,7 @@ const Fusion = () => {
               <input type="radio" name="valence" value={slotA.valence} />
             </td>
             <td>
-              <label htmlFor="valence">valence</label>
+              <label htmlFor="valence">Valence</label>
             </td>
             <td>
               <input type="radio" name="valence" value={slotB.valence} />

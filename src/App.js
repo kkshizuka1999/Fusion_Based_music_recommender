@@ -39,20 +39,31 @@ const App = () => {
           {!token ? <LoginComponent /> : <Logout />}
           <Spacer size={16} />
         </header>
-        <div className="container">
+        <div className="mb-5">
           <div className="row">
             <div className="col">
+              <h4 className="d-flex flex-column align-items-center border-bottom border-info">
+                Slot1
+              </h4>
               <Search />
             </div>
             <div className="col">
+              <h4 className="d-flex flex-column align-items-center border-bottom border-info ">
+                Audio Features
+              </h4>
               <Fusion />
             </div>
             <div className="col">
+              <h4 className="d-flex flex-column align-items-center border-bottom border-info">
+                Slot2
+              </h4>
               <GetRondomSong />
             </div>
           </div>
         </div>
-        <RecommendationView songs={store.recommendationInfo} />
+        <div className="mb-5">
+          <RecommendationView songs={store.recommendationInfo} />
+        </div>
         <footer className="footer">
           <div className="fixed-bottom">
             <Player trackUri={store.songUri} />

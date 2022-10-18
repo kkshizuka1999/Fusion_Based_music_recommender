@@ -6,7 +6,7 @@ const initialState = {
   slotB: {},
   songInfoA: {},
   songInfoB: {},
-  recommendationInfo: {},
+  recommendationInfo: [],
   songUri: '',
 }
 
