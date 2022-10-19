@@ -16,6 +16,12 @@ code {
   display: flex;
 }
 
+.recoview {
+  border: 1px solid #c9c9c9;
+  height: 600px;
+  overflow: auto;
+}
+
 button .LogIO{
   display: block;
   margin: 0 0 0 auto; 

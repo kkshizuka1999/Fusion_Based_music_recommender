@@ -17,10 +17,11 @@ const Fusion = () => {
       },
     }
     const baseUrl = 'https://api.spotify.com/v1/recommendations'
+
     const baseSongItem = fusion.basesong[0].checked
       ? fusion.basesong[0].value
       : fusion.basesong[1].value
-    const acousticnesItem = fusion.acousticness[0].checked
+    const acousticnessItem = fusion.acousticness[0].checked
       ? fusion.acousticness[0].value
       : fusion.acousticness[1].value
     const danceabilityItem = fusion.danceability[0].checked
@@ -55,7 +56,7 @@ const Fusion = () => {
       : fusion.valence[1].value
 
     // URL構築
-    const url = `${baseUrl}?seed_tracks=${baseSongItem}&target_acousticness=${acousticnesItem}&target_danceability=${danceabilityItem}&target_energy=${energyItem}&target_instrumentalness=${instrumentalnessItem}&target_key=${keyItem}&target_liveness=${livenessItem}&target_mode=${modeItem}&target_speechiness=${speechinessItem}&target_tempo=${tempoItem}&target_valence=${valenceItem}&target_loudness=${loudnessItem}&limit=100`
+    const url = `${baseUrl}?seed_tracks=${baseSongItem}&target_acousticness=${acousticnessItem}&target_danceability=${danceabilityItem}&target_energy=${energyItem}&target_instrumentalness=${instrumentalnessItem}&target_key=${keyItem}&target_liveness=${livenessItem}&target_mode=${modeItem}&target_speechiness=${speechinessItem}&target_tempo=${tempoItem}&target_valence=${valenceItem}&target_loudness=${loudnessItem}&limit=100`
     try {
       const response = await fetch(url, params)
       recommendation = (await response.json()).tracks
@@ -79,7 +80,7 @@ const Fusion = () => {
               <input type="radio" name="basesong" value={slotA.id} />
             </td>
             <td>
-              <label htmlFor="acousticness">Seed Song</label>
+              <label htmlFor="basesong">Seed Song</label>
             </td>
             <td>
               <input type="radio" name="basesong" value={slotB.id} />
@@ -243,6 +244,7 @@ const Fusion = () => {
       <button
         type="button"
         className="ui-button fancy-button pop-onhover bg-gradient3"
+        disabled={!Object.keys(slotA).length || !Object.keys(slotB).length}
         onClick={getRecommendation}
       >
         <span className="auth-btn">Fusion</span>

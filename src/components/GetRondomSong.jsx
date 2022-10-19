@@ -73,23 +73,27 @@ const GetRondomSong = () => {
 
   return (
     <div>
-      <button
-        type="button"
-        className="ui-button fancy-button bg-gradient1 showView"
-        onClick={handleShow}
-      >
-        <span className="setsong-btn">Set to Slot2</span>
-      </button>
+      <div className="d-flex justify-content-center">
+        <button
+          type="button"
+          className="ui-button fancy-button bg-gradient1 showView"
+          onClick={handleShow}
+        >
+          <span className="setsong-btn">Set to Slot2</span>
+        </button>
+      </div>
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton />
         <Offcanvas.Body>
-          <button
-            type="button"
-            className="ui-button fancy-button pop-onhover bg-gradient1 showView"
-            onClick={search}
-          >
-            <span className="setsong-btn">RondomSong</span>
-          </button>
+          <div className="d-flex justify-content-center">
+            <button
+              type="button"
+              className="ui-button fancy-button pop-onhover bg-gradient1 showView"
+              onClick={search}
+            >
+              <span className="setsong-btn">RondomSong</span>
+            </button>
+          </div>
           <Container>
             <SearchView songs={songs} flag={1} />
           </Container>

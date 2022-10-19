@@ -48,7 +48,7 @@ const App = () => {
               <Search />
             </div>
             <div className="col">
-              <h4 className="d-flex flex-column align-items-center border-bottom border-info ">
+              <h4 className="d-flex flex-column align-items-center border-bottom border-info">
                 Audio Features
               </h4>
               <Fusion />

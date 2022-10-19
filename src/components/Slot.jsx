@@ -6,6 +6,9 @@ import PlayButton from './PlayButton'
 const Slot = ({ flag }) => {
   const [store] = useContext(StoreContext)
   let slotInfo = {}
+  function isEmpty(obj) {
+    return !Object.keys(obj).length
+  }
   if (flag === 0) {
     slotInfo = store.songInfoA
   } else {
@@ -14,7 +17,7 @@ const Slot = ({ flag }) => {
 
   return (
     <div>
-      <Card>
+      <Card className={isEmpty(slotInfo) ? 'd-none' : ''}>
         <Card.Img src={slotInfo.image} />
         <Card.Body>
           <Card.Title>{slotInfo.name}</Card.Title>
