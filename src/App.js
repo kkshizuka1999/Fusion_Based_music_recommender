@@ -34,7 +34,7 @@ const App = () => {
   return (
     <Layout>
       <div>
-        <header className="mb-2 d-flex flex-column align-items-center justify-content-center">
+        <header className="mb-5 mt-5 d-flex flex-column align-items-center justify-content-center">
           <h1>Fusion-Based Recommender with Spotify API</h1>
           {!token ? <LoginComponent /> : <Logout />}
           <Spacer size={16} />
