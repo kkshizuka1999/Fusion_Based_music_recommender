@@ -51,12 +51,18 @@ const Fusion = () => {
     const tempoItem = fusion.tempo[0].checked
       ? fusion.tempo[0].value
       : fusion.tempo[1].value
+    const durationMsItem = fusion.duration_ms[0].checked
+      ? fusion.duration_ms[0].value
+      : fusion.duration_ms[1].value
+    const timeSignatureItem = fusion.time_signature[0].checked
+      ? fusion.time_signature[0].value
+      : fusion.time_signature[1].value
     const valenceItem = fusion.valence[0].checked
       ? fusion.valence[0].value
       : fusion.valence[1].value
 
     // URL構築
-    const url = `${baseUrl}?seed_tracks=${baseSongItem}&target_acousticness=${acousticnessItem}&target_danceability=${danceabilityItem}&target_energy=${energyItem}&target_instrumentalness=${instrumentalnessItem}&target_key=${keyItem}&target_liveness=${livenessItem}&target_mode=${modeItem}&target_speechiness=${speechinessItem}&target_tempo=${tempoItem}&target_valence=${valenceItem}&target_loudness=${loudnessItem}&limit=100`
+    const url = `${baseUrl}?seed_tracks=${baseSongItem}&target_acousticness=${acousticnessItem}&target_danceability=${danceabilityItem}&target_energy=${energyItem}&target_instrumentalness=${instrumentalnessItem}&target_key=${keyItem}&target_liveness=${livenessItem}&target_duration_ms=${durationMsItem}&target_time_signature=${timeSignatureItem}&target_mode=${modeItem}&target_speechiness=${speechinessItem}&target_tempo=${tempoItem}&target_valence=${valenceItem}&target_loudness=${loudnessItem}&limit=100`
     try {
       const response = await fetch(url, params)
       recommendation = (await response.json()).tracks
@@ -72,183 +78,123 @@ const Fusion = () => {
   }
 
   return (
-    <div className="mb-2 d-flex flex-column align-items-center justify-content-center">
+    <div className="py-5 px-5">
       <form name="fusion">
-        <table>
-          <tr>
-            <td>
-              <input type="radio" name="basesong" value={slotA.id} />
-            </td>
-            <td>
-              <label htmlFor="basesong">Seed Song</label>
-            </td>
-            <td>
-              <input type="radio" name="basesong" value={slotB.id} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="radio"
-                name="acousticness"
-                value={slotA.acousticness}
-              />
-            </td>
-            <td>
-              <label htmlFor="acousticness">Acousticness</label>
-            </td>
-            <td>
-              <input
-                type="radio"
-                name="acousticness"
-                value={slotB.acousticness}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="radio"
-                name="danceability"
-                value={slotA.danceability}
-              />
-            </td>
-            <td>
-              <label htmlFor="danceability">Danceability</label>
-            </td>
-            <td>
-              <input
-                type="radio"
-                name="danceability"
-                value={slotB.danceability}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="energy" value={slotA.energy} />
-            </td>
-            <td>
-              <label htmlFor="energy">Energy</label>
-            </td>
-            <td>
-              <input type="radio" name="energy" value={slotB.energy} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="radio"
-                name="instrumentalness"
-                value={slotA.instrumentalness}
-              />
-            </td>
-            <td>
-              <label htmlFor="instrumentalness">Instrumentalness</label>
-            </td>
-            <td>
-              <input
-                type="radio"
-                name="instrumentalness"
-                value={slotB.instrumentalness}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="key" value={slotA.key} />
-            </td>
-            <td>
-              <label htmlFor="key">Key</label>
-            </td>
-            <td>
-              <input type="radio" name="key" value={slotB.key} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="liveness" value={slotA.liveness} />
-            </td>
-            <td>
-              <label htmlFor="liveness">Liveness</label>
-            </td>
-            <td>
-              <input type="radio" name="liveness" value={slotB.liveness} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="loudness" value={slotA.loudness} />
-            </td>
-            <td>
-              <label htmlFor="loudness">Loudness</label>
-            </td>
-            <td>
-              <input type="radio" name="loudness" value={slotB.loudness} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="mode" value={slotA.mode} />
-            </td>
-            <td>
-              <label htmlFor="mode">Mode</label>
-            </td>
-            <td>
-              <input type="radio" name="mode" value={slotB.mode} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="radio"
-                name="speechiness"
-                value={slotA.speechiness}
-              />
-            </td>
-            <td>
-              <label htmlFor="speechiness">Speechiness</label>
-            </td>
-            <td>
-              <input
-                type="radio"
-                name="speechiness"
-                value={slotB.speechiness}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="tempo" value={slotA.tempo} />
-            </td>
-            <td>
-              <label htmlFor="tempo">Tempo</label>
-            </td>
-            <td>
-              <input type="radio" name="tempo" value={slotB.tempo} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="valence" value={slotA.valence} />
-            </td>
-            <td>
-              <label htmlFor="valence">Valence</label>
-            </td>
-            <td>
-              <input type="radio" name="valence" value={slotB.valence} />
-            </td>
-          </tr>
-        </table>
+        <div className="d-flex flex-column">
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="basesong" value={slotA.id} />
+            <label htmlFor="basesong">Seed Song</label>
+            <input type="radio" name="basesong" value={slotB.id} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input
+              type="radio"
+              name="acousticness"
+              value={slotA.acousticness}
+            />
+            <label htmlFor="acousticness">Acousticness</label>
+            <input
+              type="radio"
+              name="acousticness"
+              value={slotB.acousticness}
+            />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input
+              type="radio"
+              name="danceability"
+              value={slotA.danceability}
+            />
+            <label htmlFor="danceability">Danceability</label>
+            <input
+              type="radio"
+              name="danceability"
+              value={slotB.danceability}
+            />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="energy" value={slotA.energy} />
+            <label htmlFor="energy">Energy</label>
+            <input type="radio" name="energy" value={slotB.energy} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input
+              type="radio"
+              name="instrumentalness"
+              value={slotA.instrumentalness}
+            />
+            <label htmlFor="instrumentalness">Instrumentalness</label>
+            <input
+              type="radio"
+              name="instrumentalness"
+              value={slotB.instrumentalness}
+            />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="key" value={slotA.key} />
+            <label htmlFor="key">Key</label>
+            <input type="radio" name="key" value={slotB.key} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="liveness" value={slotA.liveness} />
+            <label htmlFor="liveness">Liveness</label>
+            <input type="radio" name="liveness" value={slotB.liveness} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="loudness" value={slotA.loudness} />
+            <label htmlFor="loudness">Loudness</label>
+            <input type="radio" name="loudness" value={slotB.loudness} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="mode" value={slotA.mode} />
+            <label htmlFor="mode">Mode</label>
+            <input type="radio" name="mode" value={slotB.mode} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="speechiness" value={slotA.speechiness} />
+            <label htmlFor="speechiness">Speechiness</label>
+            <input type="radio" name="speechiness" value={slotB.speechiness} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="tempo" value={slotA.tempo} />
+            <label htmlFor="tempo">Tempo</label>
+            <input type="radio" name="tempo" value={slotB.tempo} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="duration_ms" value={slotA.duration_ms} />
+            <label htmlFor="tempo">Duration_ms</label>
+            <input type="radio" name="duration_ms" value={slotB.duration_ms} />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input
+              type="radio"
+              name="time_signature"
+              value={slotA.time_signature}
+            />
+            <label htmlFor="tempo">time_signature</label>
+            <input
+              type="radio"
+              name="time_signature"
+              value={slotB.time_signature}
+            />
+          </div>
+          <div className="d-flex  justify-content-between">
+            <input type="radio" name="valence" value={slotA.valence} />
+            <label htmlFor="valence">Valence</label>
+            <input type="radio" name="valence" value={slotB.valence} />
+          </div>
+        </div>
       </form>
-      <button
-        type="button"
-        className="ui-button fancy-button pop-onhover bg-gradient3"
-        disabled={!Object.keys(slotA).length || !Object.keys(slotB).length}
-        onClick={getRecommendation}
-      >
-        <span className="auth-btn">Fusion</span>
-      </button>
+      <div className="py-2 d-flex justify-content-center">
+        <button
+          type="button"
+          className="ui-button fancy-button pop-onhover bg-gradient3"
+          disabled={!Object.keys(slotA).length || !Object.keys(slotB).length}
+          onClick={getRecommendation}
+        >
+          <span className="auth-btn">Fusion</span>
+        </button>
+      </div>
     </div>
   )
 }

@@ -41,6 +41,8 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
         features.speechiness = data.speechiness
         features.tempo = data.tempo
         features.valence = data.valence
+        features.duration_ms = data.duration_ms
+        features.time_signature = data.time_signature
       })
 
     if (flag === 0) {
