@@ -15,6 +15,7 @@ const GetRondomSong = () => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const [store] = useContext(StoreContext)
+  const { token } = store
 
   function getRandomSearch() {
     // A list of all characters that can be chosen.
@@ -40,7 +41,6 @@ const GetRondomSong = () => {
 
   async function search() {
     resSongs = {}
-    const { token } = store
     const randomOffset = Math.ceil(Math.random() * 1000)
     const type = 'track'
     // Get request using search to get the ArtistID
@@ -77,6 +77,7 @@ const GetRondomSong = () => {
         <button
           type="button"
           className="ui-button fancy-button bg-gradient1 showView"
+          disabled={!token}
           onClick={handleShow}
         >
           <span className="setsong-btn">Set to Slot2</span>

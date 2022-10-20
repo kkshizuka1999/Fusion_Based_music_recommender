@@ -15,9 +15,9 @@ const Search = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const { token } = store
 
   async function search(input) {
-    const { token } = store
     // Get request using search to get the ArtistID
     const artistParams = {
       method: 'GET',
@@ -42,6 +42,7 @@ const Search = () => {
         <button
           type="button"
           className="ui-button fancy-button bg-gradient1 showView"
+          disabled={!token}
           onClick={handleShow}
         >
           <span className="setsong-btn">Set to Slot1</span>

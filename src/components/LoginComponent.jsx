@@ -14,7 +14,7 @@ const LoginComponent = () => {
   }
   const login = () => {
     const CLIENT_ID = '31ba0a4e4e904836bff6ac72f5de9f4b'
-    const REDIRECT_URI = 'https://fusion-based-music-recommender.web.app'
+    const REDIRECT_URI = 'https://fusion-based-music-recommender.web.app/'
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
     const RESPONSE_TYPE = 'token'
     const SHOW_DIALOG = 'true'

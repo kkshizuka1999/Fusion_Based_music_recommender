@@ -17,7 +17,7 @@ const App = () => {
   const { token } = store
   useEffect(() => {
     const { hash } = window.location
-    let localToken = window.localStorage.getItem('token')
+    let localToken = token
 
     if (!localToken && hash) {
       // eslint-disable-next-line prefer-destructuring

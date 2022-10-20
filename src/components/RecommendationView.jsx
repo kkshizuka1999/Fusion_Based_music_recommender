@@ -10,6 +10,7 @@ const RecommendationView = ({ songs }) => {
 
   useEffect(() => {
     setLoadSongs(10)
+    setIsEmpty(false)
   }, [songs])
 
   const displayMore = () => {
@@ -31,7 +32,7 @@ const RecommendationView = ({ songs }) => {
           type="button"
           className="ui-button fancy-button bg-gradient1"
           // eslint-disable-next-line no-unneeded-ternary
-          disabled={isEmpty ? true : false}
+          disabled={isEmpty || !songs.length}
           onClick={displayMore}
         >
           <span className="setsong-btn">More</span>
