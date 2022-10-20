@@ -83,7 +83,7 @@ const Fusion = () => {
         <div className="d-flex flex-column">
           <div className="d-flex  justify-content-between">
             <input type="radio" name="basesong" value={slotA.id} />
-            <label htmlFor="basesong">Seed Song</label>
+            <label htmlFor="basesong">基になる曲</label>
             <input type="radio" name="basesong" value={slotB.id} />
           </div>
           <div className="d-flex  justify-content-between">
@@ -92,7 +92,7 @@ const Fusion = () => {
               name="acousticness"
               value={slotA.acousticness}
             />
-            <label htmlFor="acousticness">Acousticness</label>
+            <label htmlFor="acousticness">アコースティック感</label>
             <input
               type="radio"
               name="acousticness"
@@ -105,7 +105,7 @@ const Fusion = () => {
               name="danceability"
               value={slotA.danceability}
             />
-            <label htmlFor="danceability">Danceability</label>
+            <label htmlFor="danceability">踊りやすさ</label>
             <input
               type="radio"
               name="danceability"
@@ -114,7 +114,7 @@ const Fusion = () => {
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="energy" value={slotA.energy} />
-            <label htmlFor="energy">Energy</label>
+            <label htmlFor="energy">力強さ</label>
             <input type="radio" name="energy" value={slotB.energy} />
           </div>
           <div className="d-flex  justify-content-between">
@@ -123,7 +123,7 @@ const Fusion = () => {
               name="instrumentalness"
               value={slotA.instrumentalness}
             />
-            <label htmlFor="instrumentalness">Instrumentalness</label>
+            <label htmlFor="instrumentalness">歌声の多さ</label>
             <input
               type="radio"
               name="instrumentalness"
@@ -132,37 +132,37 @@ const Fusion = () => {
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="key" value={slotA.key} />
-            <label htmlFor="key">Key</label>
+            <label htmlFor="key">キー</label>
             <input type="radio" name="key" value={slotB.key} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="liveness" value={slotA.liveness} />
-            <label htmlFor="liveness">Liveness</label>
+            <label htmlFor="liveness">ライブ感</label>
             <input type="radio" name="liveness" value={slotB.liveness} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="loudness" value={slotA.loudness} />
-            <label htmlFor="loudness">Loudness</label>
+            <label htmlFor="loudness">音量</label>
             <input type="radio" name="loudness" value={slotB.loudness} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="mode" value={slotA.mode} />
-            <label htmlFor="mode">Mode</label>
+            <label htmlFor="mode">調性（メジャーorマイナー）</label>
             <input type="radio" name="mode" value={slotB.mode} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="speechiness" value={slotA.speechiness} />
-            <label htmlFor="speechiness">Speechiness</label>
+            <label htmlFor="speechiness">歌詞の多さ</label>
             <input type="radio" name="speechiness" value={slotB.speechiness} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="tempo" value={slotA.tempo} />
-            <label htmlFor="tempo">Tempo</label>
+            <label htmlFor="tempo">BPM</label>
             <input type="radio" name="tempo" value={slotB.tempo} />
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="duration_ms" value={slotA.duration_ms} />
-            <label htmlFor="tempo">Duration_ms</label>
+            <label htmlFor="tempo">曲の長さ</label>
             <input type="radio" name="duration_ms" value={slotB.duration_ms} />
           </div>
           <div className="d-flex  justify-content-between">
@@ -171,7 +171,7 @@ const Fusion = () => {
               name="time_signature"
               value={slotA.time_signature}
             />
-            <label htmlFor="tempo">time_signature</label>
+            <label htmlFor="tempo">拍数</label>
             <input
               type="radio"
               name="time_signature"
@@ -180,7 +180,7 @@ const Fusion = () => {
           </div>
           <div className="d-flex  justify-content-between">
             <input type="radio" name="valence" value={slotA.valence} />
-            <label htmlFor="valence">Valence</label>
+            <label htmlFor="valence">明るさ</label>
             <input type="radio" name="valence" value={slotB.valence} />
           </div>
         </div>
