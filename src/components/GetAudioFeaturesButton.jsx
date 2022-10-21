@@ -8,7 +8,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
   const [store, setStore] = useContext(StoreContext)
   let features = {}
   let songInfo = {}
-  async function getAF(flag, id, img, songname, artistsname, uri) {
+  async function getAF(flag, id, img, songname, artistsname) {
     features = {
       id,
     }
@@ -16,7 +16,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
       image: img,
       name: songname,
       artists: artistsname,
-      uri,
+      songId: id,
     }
     const { token } = store
     // Get request using search to get the ArtistID
@@ -57,7 +57,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
     <div>
       <button
         type="button"
-        className="rounded-circle"
+        className="btn btn--circle btn--circle-c btn--shadow"
         onClick={() =>
           getAF(
             defaultFlag,
@@ -73,7 +73,9 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
           )
         }
       >
-        <BsPlusLg />
+        <i>
+          <BsPlusLg color="#555555" />
+        </i>
       </button>
     </div>
   )

@@ -8,6 +8,7 @@ const SearchView = ({ songs, flag }) => {
   return (
     <div className="pr-2 my-3 lm-2">
       {songs.map((song) => {
+        const songUrl = `https://open.spotify.com/track/${song.id}`
         return (
           <div key={song.id} className="border-bottom border-info px-2 mt-3">
             <div className="d-flex flex-row align-items-center justify-content-start">
@@ -17,7 +18,14 @@ const SearchView = ({ songs, flag }) => {
                 alt=""
               />
               <div className="px-2 mt-3 lm-3">
-                <div>{song.name}</div>
+                <a
+                  href={songUrl}
+                  className="link-dark text-decoration-none"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {song.name}
+                </a>
                 <div className="text-muted">
                   {song.artists
                     .map((artist) => {
@@ -28,10 +36,10 @@ const SearchView = ({ songs, flag }) => {
               </div>
             </div>
             <div className="mb-2 d-flex flex-row align-items-center justify-content-end">
-              <div className="pl-2">
+              <div className="px-2">
                 <GetAudioFeaturesButton song={song} flag={flag} />
               </div>
-              <div className="pl-2">
+              <div className="px-2">
                 <PlayButton uri={song.uri} />
               </div>
             </div>

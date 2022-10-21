@@ -13,10 +13,12 @@ const PlayButton = ({ uri }) => {
     <div>
       <button
         type="button"
-        className="rounded-circle"
+        className="btn btn--circle btn--circle-c btn--shadow"
         onClick={() => handleClick(uri)}
       >
-        <BsPlayFill />
+        <i>
+          <BsPlayFill color="#555555" />
+        </i>
       </button>
     </div>
   )

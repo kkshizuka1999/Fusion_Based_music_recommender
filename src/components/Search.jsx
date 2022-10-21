@@ -62,7 +62,7 @@ const Search = () => {
               />
             </InputGroup>
           </Container>
-          <Container className="cards">
+          <Container>
             <SearchView songs={songs} flag={0} />
           </Container>
         </Offcanvas.Body>

@@ -15,15 +15,26 @@ const Slot = ({ flag }) => {
     slotInfo = store.songInfoB
   }
 
+  const songUrl = `https://open.spotify.com/track/${slotInfo.songId}`
+
   return (
     <div>
       <Card className={isEmpty(slotInfo) ? 'd-none' : ''}>
         <Card.Img src={slotInfo.image} />
         <Card.Body>
-          <Card.Title>{slotInfo.name}</Card.Title>
+          <Card.Title>
+            <a
+              href={songUrl}
+              className="link-dark text-decoration-none"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {slotInfo.name}
+            </a>
+          </Card.Title>
           <Card.Subtitle>{slotInfo.artists}</Card.Subtitle>
           <div className="mb-2 d-flex flex-row align-items-center justify-content-end">
-            <div className="pl-2">
+            <div className="px-2">
               <PlayButton uri={slotInfo.uri} />
             </div>
           </div>
