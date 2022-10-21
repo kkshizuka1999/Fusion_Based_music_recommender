@@ -35,7 +35,7 @@ const Slot = ({ flag }) => {
           <Card.Subtitle>{slotInfo.artists}</Card.Subtitle>
           <div className="mb-2 d-flex flex-row align-items-center justify-content-end">
             <div className="px-2">
-              <PlayButton uri={slotInfo.uri} />
+              <PlayButton uri={slotInfo.songUri} />
             </div>
           </div>
         </Card.Body>

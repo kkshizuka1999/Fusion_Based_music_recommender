@@ -8,7 +8,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
   const [store, setStore] = useContext(StoreContext)
   let features = {}
   let songInfo = {}
-  async function getAF(flag, id, img, songname, artistsname) {
+  async function getAF(flag, id, img, songname, artistsname, uri) {
     features = {
       id,
     }
@@ -17,6 +17,7 @@ const GetAudioFeaturesButton = ({ song, flag: defaultFlag }) => {
       name: songname,
       artists: artistsname,
       songId: id,
+      songUri: uri,
     }
     const { token } = store
     // Get request using search to get the ArtistID
