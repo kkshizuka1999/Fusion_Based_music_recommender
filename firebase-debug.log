@@ -1,0 +1,51 @@
+[debug] [2022-10-21T09:07:37.229Z] ----------------------------------------------------------------------
+[debug] [2022-10-21T09:07:37.231Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-10-21T09:07:37.231Z] CLI Version:   11.15.0
+[debug] [2022-10-21T09:07:37.231Z] Platform:      win32
+[debug] [2022-10-21T09:07:37.231Z] Node Version:  v16.18.0
+[debug] [2022-10-21T09:07:37.232Z] Time:          Fri Oct 21 2022 18:07:37 GMT+0900 (日本標準時)
+[debug] [2022-10-21T09:07:37.232Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-21T09:07:37.284Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-21T09:07:37.284Z] > authorizing via signed-in user (ike25uta@gmail.com)
+[debug] [2022-10-21T09:07:37.284Z] [iam] checking project fusion-based-music-recommender for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-21T09:07:37.286Z] > refreshing access token with scopes: []
+[debug] [2022-10-21T09:07:37.287Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-10-21T09:07:37.287Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-21T09:07:37.581Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-10-21T09:07:37.581Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-21T09:07:37.587Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fusion-based-music-recommender:testIamPermissions [none]
+[debug] [2022-10-21T09:07:37.587Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fusion-based-music-recommender:testIamPermissions x-goog-quota-user=projects/fusion-based-music-recommender
+[debug] [2022-10-21T09:07:37.588Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fusion-based-music-recommender:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-21T09:07:38.485Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fusion-based-music-recommender:testIamPermissions 200
+[debug] [2022-10-21T09:07:38.485Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fusion-based-music-recommender:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-21T09:07:38.486Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fusion-based-music-recommender [none]
+[debug] [2022-10-21T09:07:38.969Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fusion-based-music-recommender 200
+[debug] [2022-10-21T09:07:38.969Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fusion-based-music-recommender {"projectId":"fusion-based-music-recommender","projectNumber":"901639619311","displayName":"Fusion-Based Music Recommender","name":"projects/fusion-based-music-recommender","resources":{"hostingSite":"fusion-based-music-recommender"},"state":"ACTIVE","etag":"1_8773c159-06fa-4bfa-bc03-835e9d7b9f28"}
+[info] 
+[info] === Deploying to 'fusion-based-music-recommender'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-10-21T09:07:38.972Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fusion-based-music-recommender/versions [none]
+[debug] [2022-10-21T09:07:38.972Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fusion-based-music-recommender/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-10-21T09:07:39.893Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fusion-based-music-recommender/versions 200
+[debug] [2022-10-21T09:07:39.893Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fusion-based-music-recommender/versions {"name":"projects/901639619311/sites/fusion-based-music-recommender/versions/7160ca025ff834c1","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[fusion-based-music-recommender]: beginning deploy... 
+[info] i  hosting[fusion-based-music-recommender]: found 12 files in build 
+[debug] [2022-10-21T09:07:39.901Z] [hosting] uploading with 200 concurrency
+[debug] [2022-10-21T09:07:40.052Z] [hosting] hash cache [YnVpbGQ] stored for 12 files
+[debug] [2022-10-21T09:07:40.052Z] [hosting][hash queue][FINAL] {"max":144,"min":2,"avg":18,"active":0,"complete":12,"success":12,"errored":0,"retried":0,"total":12,"elapsed":150}
+[debug] [2022-10-21T09:07:40.052Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/901639619311/sites/fusion-based-music-recommender/versions/7160ca025ff834c1:populateFiles [none]
+[debug] [2022-10-21T09:07:40.052Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/901639619311/sites/fusion-based-music-recommender/versions/7160ca025ff834c1:populateFiles {"files":{"/favicon.ico":"eae62e993eb980ec8a25058c39d5a51feab118bd2100c4deebb2a9c158ec11f9","/logo192.png":"3ee59515172ee198f3be375979df15ac5345183e656720a381b8872b2a39dc8b","/logo512.png":"ee7e2f3fdb8209c4b6fd7bef6ba50d1b9dba30a25bb5c3126df057e1cb6f5331","/manifest.json":"5c997de1364b8be939319fa9209abd77f2caf7f8844999a9e2e9173f844e7840","/robots.txt":"b2090cf9761ef60aa06e4fab97679bd43dfa5e5df073701ead5879d7c68f1ec5","/index.html":"722eef94e552d42b8b8083f8b8af4b8d56d45744136a8fd8ad0027ef2e8502f6","/asset-manifest.json":"ed20e47a47651f4d15396dcbfa4a8f4c9282924824d9c5b4a3a59e305a944ee6","/static/js/main.3cc62ea5.js.LICENSE.txt":"cb447b46a232453c141edeaa673c62b8d97fe32aefe055864e011dc1f68f9e7c","/static/css/main.a80845bd.css":"5c8238db8089ad6cd1f383d4660897c359b3a75d67855203ef23543ebec27e34","/static/js/main.3cc62ea5.js":"6cf6dceeabc0477a6ebb877bc8866ab29a90a9f36beea6317ab54d48a8f4b1c2","/static/css/main.a80845bd.css.map":"360573c298a66023fc01ec6fb5b3a462370f2e6c362db5fff9180ac4e5448f8b","/static/js/main.3cc62ea5.js.map":"db10b50928bfba974439b14135745d90d921fa5c3bc01f18e4c6cd2eb5520dd1"}}
+[debug] [2022-10-21T09:07:40.740Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/901639619311/sites/fusion-based-music-recommender/versions/7160ca025ff834c1:populateFiles 200
+[debug] [2022-10-21T09:07:40.740Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/901639619311/sites/fusion-based-music-recommender/versions/7160ca025ff834c1:populateFiles {"uploadRequiredHashes":["db10b50928bfba974439b14135745d90d921fa5c3bc01f18e4c6cd2eb5520dd1","722eef94e552d42b8b8083f8b8af4b8d56d45744136a8fd8ad0027ef2e8502f6","ed20e47a47651f4d15396dcbfa4a8f4c9282924824d9c5b4a3a59e305a944ee6","6cf6dceeabc0477a6ebb877bc8866ab29a90a9f36beea6317ab54d48a8f4b1c2"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files"}
+[debug] [2022-10-21T09:07:40.741Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/db10b50928bfba974439b14135745d90d921fa5c3bc01f18e4c6cd2eb5520dd1 [none]
+[debug] [2022-10-21T09:07:40.741Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/db10b50928bfba974439b14135745d90d921fa5c3bc01f18e4c6cd2eb5520dd1 [stream]
+[debug] [2022-10-21T09:07:40.742Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/722eef94e552d42b8b8083f8b8af4b8d56d45744136a8fd8ad0027ef2e8502f6 [none]
+[debug] [2022-10-21T09:07:40.742Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/722eef94e552d42b8b8083f8b8af4b8d56d45744136a8fd8ad0027ef2e8502f6 [stream]
+[debug] [2022-10-21T09:07:40.742Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/ed20e47a47651f4d15396dcbfa4a8f4c9282924824d9c5b4a3a59e305a944ee6 [none]
+[debug] [2022-10-21T09:07:40.742Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/ed20e47a47651f4d15396dcbfa4a8f4c9282924824d9c5b4a3a59e305a944ee6 [stream]
+[debug] [2022-10-21T09:07:40.743Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/6cf6dceeabc0477a6ebb877bc8866ab29a90a9f36beea6317ab54d48a8f4b1c2 [none]
+[debug] [2022-10-21T09:07:40.743Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fusion-based-music-recommender/versions/7160ca025ff834c1/files/6cf6dceeabc0477a6ebb877bc8866ab29a90a9f36beea6317ab54d48a8f4b1c2 [stream]
+[debug] [2022-10-21T09:07:40.743Z] [hosting][populate queue][FINAL] {"max":693,"min":693,"avg":693,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":695}
+[debug] [2022-10-21T09:07:40.743Z] [hosting] uploads queued: 4
